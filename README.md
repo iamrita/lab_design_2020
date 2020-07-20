@@ -1,2 +1,2 @@
 # Lab Design
-# Alissa V, Amrita V
+  Alissa V, Amrita V

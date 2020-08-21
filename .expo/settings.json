@@ -1,0 +1,8 @@
+{
+  "hostType": "localhost",
+  "lanType": "ip",
+  "dev": false,
+  "minify": true,
+  "urlRandomness": "wa-b2c",
+  "https": false
+}

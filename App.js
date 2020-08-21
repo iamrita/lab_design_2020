@@ -34,6 +34,7 @@ const AppSwitchNavigator = createStackNavigator(
     CollegeWork: {screen: CollegeWorkScreen, navigationOptions: {headerShown: false} },
     IntroQuestion: {screen: IntroQuestionScreen, navigationOptions: {headerShown: false} }
   },
+  
   {
     //initialRouteName: "LandingPage2",
     initialRouteParams: "FamIncome1",

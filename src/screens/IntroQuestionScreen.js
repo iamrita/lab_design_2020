@@ -2,12 +2,12 @@ import React from "react";
 import {View, Text, StyleSheet, Image, TouchableOpacity} from "react-native";
 import {Feather} from '@expo/vector-icons'
 
-const HomeScreen = () => { // change screen name
+const HomeScreen = (props) => { // change screen name
    return (
        <View style={styles.container}>
         
-        <Text style={styles.text}>Let's find you money for college!</Text>
-        <Text style={styles.text2}>Did you know that 85% of college students receive financial aid to pay for college?</Text>
+        <Text style={styles.text}>Let's get you cash for college!</Text>
+        <TouchableOpacity onPress={() => props.navigation.navigate('Knowledge')}><Feather style={styles.icon} name="arrow-right-circle"/></TouchableOpacity>
 
        </View>
    )
@@ -26,13 +26,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Hoefler Text',
     fontWeight:'bold',
     fontSize:45,
+    marginLeft: 25,
+    marginRight: 25,
+    marginBottom: 100
 
   },
-  text2: {
-    fontFamily: 'Hoefler Text',
-    color: 'gray',
-    fontSize:40,
+  icon: {
+    fontSize:50,
+    position: 'absolute',
+    bottom: -215,
+    left: 100
   }
+  
  
 });
  

@@ -117,5 +117,23 @@ const styles = StyleSheet.create({
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold'
     },
+    nextSteps: {
+        fontFamily: 'Hoefler Text',
+        fontWeight: 'bold',
+        marginRight: normalize(5),
+        fontSize: normalize(15),
+    },
+    backToResults: {
+        fontFamily: 'Hoefler Text',
+        fontWeight: 'bold',
+        marginLeft: normalize(5),
+        fontSize: normalize(15),
+    },
+    arrows: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        flex: 1,
+        alignItems: 'flex-end'
+    }
   });
 

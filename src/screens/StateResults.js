@@ -179,6 +179,24 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: normalize(25),
         textAlign: 'center'
+    },
+    nextSteps: {
+        fontFamily: 'Hoefler Text',
+        fontWeight: 'bold',
+        marginRight: normalize(5),
+        fontSize: normalize(15),
+    },
+    backToResults: {
+        fontFamily: 'Hoefler Text',
+        fontWeight: 'bold',
+        marginLeft: normalize(5),
+        fontSize: normalize(15),
+    },
+    arrows: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        flex: 1,
+        alignItems: 'flex-end'
     }
   });
 

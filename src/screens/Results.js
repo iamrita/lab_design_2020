@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
         //paddingTop: normalize(5),
     },
     buttonItems: {
+        flex: 1,
         flexDirection: "row",
         justifyContent: "space-between"
     }

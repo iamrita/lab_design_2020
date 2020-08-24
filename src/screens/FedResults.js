@@ -27,14 +27,27 @@ export default function FedResults( props ) {
                     through the Pell Grant!
                 </Text>
             </View>
-            <View style={styles.arrow}>
-                <TouchableOpacity
-                    onPress={() =>
-                        props.navigation.navigate("Results")
-                    }
-                >
-                    <Ionicons name="ios-arrow-round-back" size={normalize(120)} color="black" />
-                </TouchableOpacity>
+            <View style={styles.arrows}>
+                <View style={styles.leftArrow}>
+                    <Text style={styles.backToResults}>Back to Results</Text>
+                    <TouchableOpacity
+                        onPress={() =>
+                            props.navigation.navigate("Results")
+                        }
+                    >
+                        <Ionicons name="ios-arrow-round-back" size={normalize(120)} color="black" />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.rightArrow}>
+                    <Text style={styles.nextSteps}>Next Steps</Text>
+                    <TouchableOpacity
+                        onPress={() =>
+                            props.navigation.navigate("Apply")
+                        }
+                    >
+                        <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );
@@ -66,9 +79,13 @@ const styles = StyleSheet.create({
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold'
     },
-    arrow: {
+    leftArrow: {
         alignItems: 'flex-start',
         marginLeft: normalize(10)
+    },
+    rightArrow: {
+        alignItems: 'flex-end',
+        marginRight: normalize(10)
     },
     firstSubtext: {
         fontSize: normalize(20),
@@ -104,5 +121,23 @@ const styles = StyleSheet.create({
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold'
     },
+    nextSteps: {
+        fontFamily: 'Hoefler Text',
+        fontWeight: 'bold',
+        marginRight: normalize(5),
+        fontSize: normalize(15),
+    },
+    backToResults: {
+        fontFamily: 'Hoefler Text',
+        fontWeight: 'bold',
+        marginLeft: normalize(5),
+        fontSize: normalize(15),
+    },
+    arrows: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        flex: 1,
+        alignItems: 'flex-end'
+    }
   });
 

@@ -27,14 +27,27 @@ export default function OtherResults( props ) {
                     through the Pell Grant!
                 </Text>
             </View>
-            <View style={styles.arrow}>
-                <TouchableOpacity
-                    onPress={() =>
-                        props.navigation.navigate("Results")
-                    }
-                >
-                    <Ionicons name="ios-arrow-round-back" size={normalize(120)} color="black" />
-                </TouchableOpacity>
+            <View style={styles.arrows}>
+                <View style={styles.leftArrow}>
+                    <Text style={styles.backToResults}>Back to Results</Text>
+                    <TouchableOpacity
+                        onPress={() =>
+                            props.navigation.navigate("Results")
+                        }
+                    >
+                        <Ionicons name="ios-arrow-round-back" size={normalize(120)} color="black" />
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.rightArrow}>
+                    <Text style={styles.nextSteps}>Next Steps</Text>
+                    <TouchableOpacity
+                        onPress={() =>
+                            props.navigation.navigate("Apply")
+                        }
+                    >
+                        <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );

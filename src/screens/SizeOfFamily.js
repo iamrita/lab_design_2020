@@ -6,6 +6,8 @@ import {TouchableOpacity} from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons'; 
 import { createStackNavigator, createAppContainer } from 'react-navigation';  
+import DropDownPicker from 'react-native-dropdown-picker';
+
 
 
 export default function SizeOfFamily( props ) {

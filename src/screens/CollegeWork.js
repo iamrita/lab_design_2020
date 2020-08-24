@@ -85,7 +85,7 @@ export default function CollegeWork( props ) {
             <View style={styles.arrow}>
                 <TouchableOpacity
                     onPress={() => 
-                        props.navigation.navigate("Apply")
+                        props.navigation.navigate("Results")
                     }
                 >
                     <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />

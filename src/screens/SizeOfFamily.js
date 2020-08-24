@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Text, StyleSheet, Button, TouchableHighlight, View, Image } from "react-native";
+import { Text, StyleSheet, Button, TouchableHighlight, View, Image, Picker } from "react-native";
 import { Dimensions, Platform, PixelRatio } from 'react-native';
 import normalize from "../../normalizeSize.js";
 import {TouchableOpacity} from "react-native-gesture-handler";
@@ -19,11 +19,23 @@ export default function SizeOfFamily( props ) {
                 How much are you thinking of working in college?
             </Text>
             <View style={styles.questions}>
+                <View style={styles.pickerView}>
+                    <Picker
+                        selectedValue={sizeOfFamily}
+                        mode='dropdown'
+                        style={styles.picker}
+                        onValueChange={(itemValue, itemIndex) => setSizeOfFamily(itemValue)}
+                    >                    
+                        {family_sizes.map((item, index) => {
+                            return (<Picker.Item label={item} value={index} key={index}/>) 
+                        })}
+                    </Picker>
+                </View>
             </View>
             <View style={styles.arrow}>
                 <TouchableOpacity
                     onPress={() => 
-                        props.navigation.navigate("FamIncome2")
+                        props.navigation.navigate("EnrollmentType")
                     }
                 >
                     <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />
@@ -43,7 +55,8 @@ const styles = StyleSheet.create({
     questions: {
         paddingTop: normalize(20),
         paddingBottom: normalize(35),
-        flex: 1
+        flex: 1,
+        justifyContent: 'center'
     },
     question: {
         paddingTop: normalize(10),
@@ -54,7 +67,9 @@ const styles = StyleSheet.create({
         fontSize: 35,
         textAlign: 'center',
         paddingRight: normalize(5),
-        paddingLeft: normalize(5)
+        paddingLeft: normalize(5),
+        fontFamily: 'Hoefler Text',
+        fontWeight: 'bold'
     },
     unclickedText: {
         color:'#5FA3B5',

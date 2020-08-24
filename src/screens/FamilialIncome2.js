@@ -85,7 +85,7 @@ export default function FamilialIncome2( props ) {
             <View style={styles.arrow}>
                 <TouchableOpacity
                     onPress={() => 
-                        props.navigation.navigate("EnrollmentType")
+                        props.navigation.navigate("SizeOfFamily")
                     }
                 >
                     <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />

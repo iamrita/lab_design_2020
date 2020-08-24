@@ -5,7 +5,7 @@ import {Feather} from '@expo/vector-icons'
 const HomeScreen = (props) => { // change screen name
    return (
        <View style={styles.container}>
-        <Image style={styles.image} source={require('../../assets/graduate.png')}/>
+        <Image style={styles.image} source={require('../../assets/4cfz19.gif')}/>
         <Text style={styles.text}>CollegeBound</Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('IntroQuestion')}><Feather style={styles.icon} name="arrow-right-circle"/></TouchableOpacity>
        </View>

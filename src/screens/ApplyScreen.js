@@ -1,17 +1,16 @@
 import React from "react";
 import {View, Text, StyleSheet, TextInput, Image, TouchableOpacity} from "react-native";
 
-const WelcomeScreen = (props) => { // change screen name
-  const firstName = props.navigation.getParam('name')
+const ApplyScreen = (props) => { // change screen name
    return (
        <View style={styles.container}>
-        
-        <Text style={styles.text}>Welcome {firstName}!</Text>
-        <Image style={styles.image} source={require('../../assets/student.png')}/>
-
-        <TouchableOpacity onPress={() => props.navigation.navigate('FamilialIncome1')}style={styles.outerButton}><Text style={styles.button}>Get me my college cash!</Text></TouchableOpacity>
-     
-
+       <Text style={styles.text}>Apply</Text>
+       <Image style={styles.image} source={require('../../assets/studying.png')}/>
+       <TouchableOpacity onPress={() => props.navigation.navigate('TotalAid')} style={styles.outerButton}><Text style={styles.button}>Click Here</Text></TouchableOpacity>
+       <Text style={styles.text2}>
+           *Remember, this is a rough estimate. To get more exact amounts, fill out 
+           the FAFSA and any official applications for state and food assitance.
+       </Text>
        </View>
    )
 };
@@ -24,6 +23,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     height: '100%',
     padding:10
+  },
+  text2: {
+    fontFamily: 'Hoefler Text',
+    fontSize:20,
+    margin:25,
+    textAlign:'center',
+    color: 'gray'
   },
   text: {
     fontFamily: 'Hoefler Text',
@@ -47,16 +53,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#A32934",
     padding:20,
-    marginTop: 50
   },
   image: {
     width: 300,
     height: 400,
-    paddingBottom:200,
   }
  
   
  
 });
  
-export default WelcomeScreen; //change screen name
+export default ApplyScreen; //change screen name

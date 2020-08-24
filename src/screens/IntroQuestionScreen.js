@@ -6,7 +6,9 @@ const HomeScreen = (props) => { // change screen name
    return (
        <View style={styles.container}>
         
-        <Text style={styles.text}>Let's get you cash for college!</Text>
+        <Image style={styles.image} source={require('../../assets/money.gif')}/>
+        <Text elevation={5} style={styles.text}>Let's get you cash for college!</Text>
+
         <TouchableOpacity onPress={() => props.navigation.navigate('Knowledge')}><Feather style={styles.icon} name="arrow-right-circle"/></TouchableOpacity>
 
        </View>
@@ -17,7 +19,7 @@ const HomeScreen = (props) => { // change screen name
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     backgroundColor: 'white',
     height: '100%',
     padding:10
@@ -28,14 +30,19 @@ const styles = StyleSheet.create({
     fontSize:45,
     marginLeft: 25,
     marginRight: 25,
-    marginBottom: 100
+    marginTop:100
+  
 
   },
   icon: {
     fontSize:50,
     position: 'absolute',
-    bottom: -215,
+    bottom: -340,
     left: 100
+  },
+  image: {
+    width: 400,
+    height: 151,
   }
   
  

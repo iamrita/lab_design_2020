@@ -1,20 +1,29 @@
 import React, {useState} from "react";
-import {View, Text, StyleSheet, TextInput, TouchableOpacity} from "react-native";
+import {View, Text, StyleSheet, TextInput, TouchableOpacity, Keyboard, TouchableWithoutFeedback} from "react-native";
 import {Feather} from '@expo/vector-icons'
 
 const KnowledgeScreen = (props) => { // change screen name
   const [firstName, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const DismissKeyboard = ({children}) => (
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>{children}</TouchableWithoutFeedback>
+  )
    return (
        <View style={styles.container}>
         
         <Text style={styles.text}>First Name</Text>
+     
         <TextInput style={styles.nameInput} autoCorrect={false} value={firstName}
           onChangeText={(userInput) => setName(userInput)}
         />
+     
         <Text style={styles.text}>Email</Text>
-        <TextInput style={styles.nameInput}/>
-        <TouchableOpacity onPress={() => props.navigation.navigate('Welcome', {name: firstName})}><Feather style={styles.icon} name="arrow-right-circle"/></TouchableOpacity>
+        <TextInput style={styles.nameInput} autoCapitalize={"none"} autoCorrect={false}
+          onChangeText={(userInput) => setEmail(userInput)}
+        />
+        <TouchableOpacity onPress={() => firstName.trim() !== "" && email.trim() !== "" ? props.navigation.navigate('Welcome', {name: firstName}) : null}><Feather style={styles.icon} name="arrow-right-circle"/></TouchableOpacity>
         <Text style={styles.disclaimer}>*We will not share your personal information with anyone</Text>
+
 
        </View>
    )
@@ -40,7 +49,7 @@ const styles = StyleSheet.create({
   icon: {
     fontSize:50,
     position: 'absolute',
-    bottom: -395,
+    bottom: -375,
     left: 300
   },
   nameInput: {

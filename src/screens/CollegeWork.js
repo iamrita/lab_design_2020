@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Text, StyleSheet, Button, TouchableHighlight, View, Image } from "react-native";
 import { Dimensions, Platform, PixelRatio } from 'react-native';
-import normalize from "../../noramlizeSize"
+import normalize from "../../normalizeSize.js";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons'; 

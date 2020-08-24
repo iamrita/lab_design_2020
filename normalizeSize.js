@@ -17,3 +17,4 @@ export default function normalize(size) {
     return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
   }
 }
+

@@ -1,5 +1,5 @@
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import {createAppContainer} from 'react-native-navigation'
+import {createStackNavigator} from 'react-navigation-stack'
 import HomeScreen from "./src/screens/HomeScreen";
 import IntroQuestionScreen from "./src/screens/IntroQuestionScreen"
 import KnowledgeScreen from './src/screens/KnowledgeScreen';
@@ -25,14 +25,13 @@ const navigator = createStackNavigator(
     FamIncome2: FamilialIncome2,
     EnrollmentType: EnrollmentType,
     CollegeWork: CollegeWork,
-
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: 'Home',
     defaultNavigationOptions: {
       title: ""
     }
   }
 );
 
-export default createAppContainer(navigator);
+export default createAppContainer(navigator)

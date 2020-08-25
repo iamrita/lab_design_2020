@@ -2,7 +2,6 @@ import React from "react";
 import {View, Text, StyleSheet, TextInput, Image, TouchableOpacity} from "react-native";
 
 const WelcomeScreen = (props) => { // change screen name
-  //const firstName = props.navigation.getParam('name');
   const user_data = props.navigation.getParam('user_data');
   const user_data_name = user_data.get('name')
 

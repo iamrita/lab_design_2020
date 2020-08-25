@@ -9,7 +9,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 
 export default function OtherResults( props ) {
-    const user_data = props.navigation.getParam('user_data');
+    //const user_data = props.navigation.getParam('user_data');
 
 
     return (

@@ -10,9 +10,9 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 export default function FedResults( props ) {
     const user_data = props.navigation.getParam('user_data');
-    const user_results = props.navigation.getParam('user_results');
+    //const user_results = props.navigation.getParam('user_results');
 
-    const federalAid = user_results.get('federalAid')
+    //const federalAid = user_results.get('federalAid')
 
 
     return (
@@ -58,6 +58,25 @@ export default function FedResults( props ) {
         </View>
     );
 };
+
+{/*<View style={styles.numberBox}>
+{(federalAid === 'a') &&
+   <Text style={styles.number}>
+        $6,195
+    </Text>
+}
+{(federalAid === 'b') &&
+   <Text style={styles.number}>
+        $3,000
+    </Text>
+}
+{(federalAid === 'a') &&
+   <Text style={styles.number}>
+        $350
+    </Text>
+}
+
+</View>*/}
 
 const styles = StyleSheet.create({
     container: {

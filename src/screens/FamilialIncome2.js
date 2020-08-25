@@ -14,12 +14,15 @@ export default function FamilialIncome2( props ) {
     const user_data = props.navigation.getParam('user_data');
     const sizeOfFamily = user_data.get('sizeOfFamily');
     const income_amounts = props.navigation.getParam('income_amounts')
-    const lowMid = income_amounts.get('lowMid')
-    const midMid = income_amounts.get('midMid')
+    //const lowMid = income_amounts.get('lowMid')
+    //const midMid = income_amounts.get('midMid')
+
     if (sizeOfFamily != 'Six or more') {
         const highMid = income_amounts.get('highMid')
     }
 
+    const [lowMid, setLowMid] = useState('$26,001 to $43,000')
+    const [midMid, setMidMid] = useState('$43,001 to $65,000')
 
     const [familyIncome, setFamilyIncome] = useState(original_family_income)
     const [firstButtonPress, setFirstButtonPress] = useState('unclicked')

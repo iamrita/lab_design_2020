@@ -21,7 +21,7 @@ export default function SizeOfFamily( props ) {
     return (
         <View style={styles.container}>
             <Text style={styles.questionText}>
-                How much are you thinking of working in college?
+                What is the total number of people in your family, including you?
             </Text>
             <View style={styles.questions}>
                 <View style={styles.pickerView}>

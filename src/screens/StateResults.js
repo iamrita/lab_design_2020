@@ -204,11 +204,11 @@ const styles = StyleSheet.create({
     pickerStyles: {
         placeholder: {
             color: 'black',
-            fontSize: normalize(12),
+            fontSize: normalize(16),
             textAlign: 'center'
         },
         inputIOS: {
-            fontSize: 16,
+            fontSize: normalize(16),
             paddingVertical: 12,
             paddingHorizontal: 10,
             borderWidth: 4,
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
             textAlign: 'center'
           },
           inputAndroid: {
-            fontSize: 16,
+            fontSize: normalize(16),
             paddingHorizontal: 10,
             paddingVertical: 8,
             borderWidth: 4,

@@ -9,7 +9,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 export default function Results( props ) {
     const user_data = props.navigation.getParam('user_data');
-    const familyIncome = user_data.get('familyIncome')
+    const familyIncome = 'a'
 
     return (
         <View style={styles.container}>
@@ -26,7 +26,7 @@ export default function Results( props ) {
                             <TouchableOpacity
                                 style={styles.arrowButton}
                                 onPress={() => 
-                                    props.navigation.navigate("FedResults", {user_data})
+                                    props.navigation.navigate("FedResults")
                                 }
                             >
                                 <Ionicons name="ios-arrow-round-forward" size={normalize(70)} color="white" />
@@ -43,7 +43,7 @@ export default function Results( props ) {
                             <TouchableOpacity
                                 style={styles.arrowButton}
                                 onPress={() => 
-                                    props.navigation.navigate("StateResults", {user_data})
+                                    props.navigation.navigate("StateResults")
                                 }
                             >
                                 <Ionicons name="ios-arrow-round-forward" size={normalize(70)} color="white" />
@@ -60,7 +60,7 @@ export default function Results( props ) {
                             <TouchableOpacity
                                 style={styles.arrowButton}
                                 onPress={() => 
-                                    props.navigation.navigate("OtherResults", {user_data})
+                                    props.navigation.navigate("OtherResults")
                                 }
                             >
                                 <Ionicons name="ios-arrow-round-forward" size={normalize(70)} color="white" />
@@ -68,7 +68,7 @@ export default function Results( props ) {
                         </View>
                     </TouchableHighlight>
                 </View>
-                {((familyIncome==='$26,000 or less') | (familyIncome==='$26,001 to $43,001') | (familyIncome == '$43,001 to $65,000')) &&
+                {((familyIncome === 'a') | (familyIncome === 'd') | (familyIncome == 'e')) &&
                     <View style={styles.question}>
                         <TouchableHighlight
                             style={styles.EITCButton}
@@ -78,7 +78,7 @@ export default function Results( props ) {
                                 <TouchableOpacity
                                     style={styles.arrowButton}
                                     onPress={() => 
-                                        props.navigation.navigate("EITC", {user_data})
+                                        props.navigation.navigate("EITC")
                                     }
                                 >
                                     <Ionicons name="ios-arrow-round-forward" size={normalize(70)} color="white" />
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     },
     EITCButton: {
         marginRight:20,
-        marginLeft:20,
+        marginLeft:12,
         marginTop:10,
         //paddingTop:30,
         //paddingBottom:30,

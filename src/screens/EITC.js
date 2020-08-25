@@ -10,7 +10,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 export default function EITC( props ) {
     const user_data = props.navigation.getParam('user_data');
-    const familyIncome = user_data.get('familyIncome')
+    const familyIncome = '$26,000 or less'
 
     return (
         <View style={styles.container}>

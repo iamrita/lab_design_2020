@@ -167,10 +167,6 @@ const styles = StyleSheet.create({
     pickerText: {
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold',
-<<<<<<< Updated upstream
-        fontSize: normalize(25),
-        textAlign: 'center'
-=======
         fontSize: normalize(20),
         textAlign: 'center',
         paddingBottom: normalize(10),
@@ -238,7 +234,6 @@ const styles = StyleSheet.create({
         marginRight: normalize(20),
         marginTop: normalize(15),
         marginBottom: normalize(15),
->>>>>>> Stashed changes
     }
   });
 

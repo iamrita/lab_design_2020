@@ -116,8 +116,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold'
     },
-<<<<<<< Updated upstream
-=======
     nextSteps: {
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold',
@@ -144,6 +142,5 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         marginRight: normalize(10)
     },
->>>>>>> Stashed changes
   });
 

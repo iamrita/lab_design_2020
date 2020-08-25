@@ -92,7 +92,7 @@ export default function FamilialIncome2( props ) {
                             }
                         }}
                         }>
-                        <Text style={third_text}>{highMid}</Text>   
+                        <Text style={third_text}>$65,000 to $92,100</Text>   
                 </TouchableHighlight>
                 </View>
                 }

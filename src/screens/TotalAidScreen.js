@@ -2,10 +2,12 @@ import React from "react";
 import {View, Text, StyleSheet, TextInput, Image, TouchableOpacity} from "react-native";
 
 const TotalAidScreen = (props) => { // change screen name
+    const user_data = props.navigation.getParam('user_data');
+
    return (
        <View style={styles.container}>
        <Text style={styles.text}>Your total aid is: </Text>
-       <TouchableOpacity onPress={() => props.navigation.navigate('Share')} style={styles.outerButton}><Text style={styles.button}>See my breakdown</Text></TouchableOpacity>
+       <TouchableOpacity onPress={() => props.navigation.navigate('Results', {user_data})} style={styles.outerButton}><Text style={styles.button}>See my breakdown</Text></TouchableOpacity>
        </View>
    )
 };

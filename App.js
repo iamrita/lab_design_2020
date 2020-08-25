@@ -17,7 +17,7 @@ import ShareScreen from './src/screens/ShareScreen';
 import ResultsScreen from "./src/screens/Results";
 import StateResultsScreen from "./src/screens/StateResults";
 import OtherResultsScreen from "./src/screens/OtherResults";
-
+import EITCScreen from "./src/screens/EITC";
 
      
 class App extends Component{
@@ -36,13 +36,11 @@ export default App
 
 const AppSwitchNavigator = createStackNavigator(
   {    
-    //Home: {screen: HomeScreen, navigationOptions: {headerShown: false}},
-    //IntroQuestion: {screen: IntroQuestionScreen, navigationOptions: {headerShown: false} },
-    //Knowledge: {screen: KnowledgeScreen, navigationOptions: {headerShown: false} },
-    //Welcome: {screen: WelcomeScreen, navigationOptions: {headerShown: false} },
-    //Apply: {screen: ApplyScreen, navigationOptions: {headerShown: false} },
-    //TotalAid: {screen: TotalAidScreen, navigationOptions: {headerShown: false} },
-    //Share: {screen: ShareScreen, navigationOptions: {headerShown: false} },
+    Home: {screen: HomeScreen, navigationOptions: {headerShown: false}},
+    IntroQuestion: {screen: IntroQuestionScreen, navigationOptions: {headerShown: false} },
+    Knowledge: {screen: KnowledgeScreen, navigationOptions: {headerShown: false} },
+    Welcome: {screen: WelcomeScreen, navigationOptions: {headerShown: false} },
+    TotalAid: {screen: TotalAidScreen, navigationOptions: {headerShown: false} },
     FamIncome1: {screen: FamilialIncome1Screen, navigationOptions: {headerShown: false} },
     FamIncome2: {screen: FamilialIncome2Screen, navigationOptions: {headerShown: false} },
     SizeOfFamily: {screen: SizeOfFamilyScreen, navigationOptions: {headerShown: false} },
@@ -52,12 +50,16 @@ const AppSwitchNavigator = createStackNavigator(
     FedResults: {screen: FedResultsScreen, navigationOptions: {headerShown: false} },
     StateResults: {screen: StateResultsScreen, navigationOptions: {headerShown: false} },
     OtherResults: {screen: OtherResultsScreen, navigationOptions: {headerShown: false} },
+    EITC: {screen: EITCScreen, navigationOptions: {headerShown: false} },
+    Apply: {screen: ApplyScreen, navigationOptions: {headerShown: false} },
+    Share: {screen: ShareScreen, navigationOptions: {headerShown: false} },
+
 
   },
   
   {
     //initialRouteName: "LandingPage2",
-    initialRouteParams: "FamIncome1",
+    initialRouteParams: "HomeScreen",
     headerMode: "float"
   }
 )

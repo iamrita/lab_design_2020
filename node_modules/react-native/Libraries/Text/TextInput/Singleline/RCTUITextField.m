@@ -9,6 +9,7 @@
 
 #import <React/RCTUtils.h>
 #import <React/UIView+React.h>
+
 #import <React/RCTBackedTextInputDelegateAdapter.h>
 #import <React/RCTTextAttributes.h>
 
@@ -26,7 +27,6 @@
                                                object:self];
 
     _textInputDelegateAdapter = [[RCTBackedTextFieldDelegateAdapter alloc] initWithTextField:self];
-    _scrollEnabled = YES;
   }
 
   return self;
@@ -68,10 +68,6 @@
 
 - (void)setDefaultTextAttributes:(NSDictionary<NSAttributedStringKey, id> *)defaultTextAttributes
 {
-  if ([_defaultTextAttributes isEqualToDictionary:defaultTextAttributes]) {
-    return;
-  }
-
   _defaultTextAttributes = defaultTextAttributes;
   [super setDefaultTextAttributes:defaultTextAttributes];
   [self _updatePlaceholder];
@@ -96,6 +92,16 @@
 - (void)setEditable:(BOOL)editable
 {
   self.enabled = editable;
+}
+
+- (void)setScrollEnabled:(BOOL)enabled
+{
+  // Do noting, compatible with multiline textinput
+}
+
+- (BOOL)scrollEnabled
+{
+  return NO;
 }
 
 - (void)setSecureTextEntry:(BOOL)secureTextEntry

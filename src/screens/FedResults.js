@@ -9,6 +9,12 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 
 export default function FedResults( props ) {
+    const user_data = props.navigation.getParam('user_data');
+    //const user_results = props.navigation.getParam('user_results');
+
+    //const federalAid = user_results.get('federalAid')
+
+
     return (
         <View style={styles.container}>
             <Text style={styles.titleText}>
@@ -20,7 +26,7 @@ export default function FedResults( props ) {
                 </Text>
                 <View style={styles.numberBox}>
                     <Text style={styles.number}>
-                        $6,195
+                            $6,195
                     </Text>
                 </View>
                 <Text style={styles.secondSubtext}>
@@ -53,6 +59,25 @@ export default function FedResults( props ) {
     );
 };
 
+{/*<View style={styles.numberBox}>
+{(federalAid === 'a') &&
+   <Text style={styles.number}>
+        $6,195
+    </Text>
+}
+{(federalAid === 'b') &&
+   <Text style={styles.number}>
+        $3,000
+    </Text>
+}
+{(federalAid === 'a') &&
+   <Text style={styles.number}>
+        $350
+    </Text>
+}
+
+</View>*/}
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
@@ -61,7 +86,7 @@ const styles = StyleSheet.create({
         paddingTop: normalize(70),
     },
     results: {
-        paddingTop: normalize(50),
+        paddingTop: normalize(80),
         paddingBottom: normalize(35),
         flex: 0.6,
         justifyContent: "space-between",
@@ -115,7 +140,7 @@ const styles = StyleSheet.create({
     secondSubtext: {
         fontSize: normalize(20),
         textAlign: 'center',
-        //paddingTop: normalize(10),
+        paddingTop: normalize(10),
         paddingRight: normalize(5),
         paddingLeft: normalize(5),
         fontFamily: 'Hoefler Text',

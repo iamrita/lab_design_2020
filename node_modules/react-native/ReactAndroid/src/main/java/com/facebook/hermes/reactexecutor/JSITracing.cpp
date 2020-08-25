@@ -10,7 +10,7 @@
 namespace facebook {
 namespace jsi {
 void addNativeTracingHooks(Runtime &rt) {
-  // Unimplemented
+  assert(false && "unimplemented");
 }
 } // namespace jsi
 } // namespace facebook

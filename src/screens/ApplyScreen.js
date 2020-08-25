@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: 'white',
     height: '100%',
-    padding:10
+    padding:50
   },
   text2: {
     fontFamily: 'Hoefler Text',

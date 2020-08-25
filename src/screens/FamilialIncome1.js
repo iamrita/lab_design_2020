@@ -7,9 +7,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons'; 
 import { createStackNavigator, createAppContainer } from 'react-navigation';  
 
+const original_family_income = 'a'
 
 export default function FamilialIncome1( props ) {
-    const [familyIncome, setFamilyIncome] = useState('')
+    const user_data = props.navigation.getParam('user_data');
+    const sizeOfFamily = user_data.get(sizeOfFamily);
+
+    const [familyIncome, setFamilyIncome] = useState(original_family_income)
     const [firstButtonPress, setFirstButtonPress] = useState('unclicked')
     const [secondButtonPress, setSecondButtonPress] = useState('unclicked')
     const [thirdButtonPress, setThirdButtonPress] = useState('unclicked')
@@ -20,6 +24,52 @@ export default function FamilialIncome1( props ) {
     const second_text = secondButtonPress === 'clicked'? styles.clickedText : styles.unclickedText
     const third_button = thirdButtonPress === 'clicked'? styles.clickedButton : styles.unclickedButton
     const third_text = thirdButtonPress === 'clicked'? styles.clickedText : styles.unclickedText
+
+
+    const income_amounts = new Map();
+    const [firstMid, setFirstMid] = useState('$26,001 to $92,100')
+    const [firstHigh, setFirstHigh] = useState('More than $92,100')
+
+    if (sizeOfFamily === 'Two') {
+        setFirstMid('$26,001 to $92,100')
+        setFirstHigh('More than $92,100')
+        income_amounts.set('lowMid', '$26,001 to $43,000')
+        income_amounts.set('midMid', '$43,001 to $65,000')
+        income_amounts.set('highMid', '$65,000 to $92,100')
+    }
+
+    if (sizeOfFamily === 'Three') {
+        setFirstMid('$26,001 to $94,400')
+        setFirstHigh('More than $94,400')
+        income_amounts.set('lowMid', '$26,001 to $48,500')
+        income_amounts.set('midMid', '$48,500 to $65,000')
+        income_amounts.set('highMid', '$65,000 to $94,400')
+    }
+
+    if (sizeOfFamily === 'Four') {
+        setFirstMid('$26,001 to $102,500')
+        setFirstHigh('More than $102,500')
+        income_amounts.set('lowMid', '$26,001 to $53,900')
+        income_amounts.set('midMid', '$53,900 to $65,000')
+        income_amounts.set('highMid', '$65,000 to $102,500')
+    }
+
+    if (sizeOfFamily === 'Five') {
+        setFirstMid('$26,001 to $109,900')
+        setFirstHigh('More than $109,900')
+        income_amounts.set('lowMid', '$26,001 to $60,300')
+        income_amounts.set('midMid', '$60,300 to $65,000')
+        income_amounts.set('highMid', '$65,000 to $109,900')
+    }
+
+    if (sizeOfFamily === 'Six or more') {
+        setFirstMid('$26,001 to $118,500')
+        setFirstHigh('More than $118,500')
+        income_amounts.set('lowMid', '$26,001 to $65,000')
+        income_amounts.set('midMid', '$65,000 to $118,500')
+    }
+
+
 
     return (
         <View style={styles.container}>
@@ -35,7 +85,7 @@ export default function FamilialIncome1( props ) {
                                 setFirstButtonPress('clicked')
                                 setSecondButtonPress('unclicked')
                                 setThirdButtonPress('unclicked')
-                                setFamilyIncome('$26,000 or less')
+                                setFamilyIncome('a')
                             }
                             {if (firstButtonPress === 'clicked') {
                                 setFirstButtonPress('unclicked')
@@ -53,14 +103,14 @@ export default function FamilialIncome1( props ) {
                                 setSecondButtonPress('clicked')
                                 setFirstButtonPress('unclicked')
                                 setThirdButtonPress('unclicked')
-                                setFamilyIncome('$26,001 to $92,100')
+                                setFamilyIncome('b')
                             }
                             {if (secondButtonPress === 'clicked') {
                                 setSecondButtonPress('unclicked')
                             }
                         }}
                         }>
-                        <Text style={second_text}>$26,001 to $92,100</Text>   
+                        <Text style={second_text}>{firstMid}</Text>   
                     </TouchableHighlight>
                 </View>
                 <View style={styles.question}>
@@ -71,22 +121,28 @@ export default function FamilialIncome1( props ) {
                                 setThirdButtonPress('clicked')
                                 setSecondButtonPress('unclicked')
                                 setFirstButtonPress('unclicked')
-                                setFamilyIncome('More than $92,000')
+                                setFamilyIncome('c')
                             }
                             {if (thirdButtonPress === 'clicked') {
                                 setThirdButtonPress('unclicked')
                             }
                         }}
                         }>
-                        <Text style={third_text}>More than $92,100</Text>   
+                        <Text style={third_text}>{firstHigh}</Text>   
                 </TouchableHighlight>
                 </View>
             </View>
             <View style={styles.arrow}>
                 <TouchableOpacity
-                    onPress={() => 
-                        props.navigation.navigate("FamIncome2")
-                    }
+                    onPress={() => {
+                        if (familyIncome != 'b') {
+                            props.navigation.navigate("EnrollmentType", {user_data, income_amounts})
+                            user_data.set('familyIncome', familyIncome),
+                        ``}
+                        else {
+                            props.navigation.navigate("FamIncome2", {user_data, income_amounts})
+                        }
+                    }}
                 >
                     <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />
                 </TouchableOpacity>

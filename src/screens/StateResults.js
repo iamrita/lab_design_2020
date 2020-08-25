@@ -6,16 +6,18 @@ import {TouchableOpacity} from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons';
 import DropDownPicker from 'react-native-dropdown-picker';
+import RNPickerSelect, { defaultStyles } from 'react-native-picker-select';
+import { Chevron } from 'react-native-shapes';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
+const original_gpa = '3.0 or more'
+const original_college = 'UC'
 
 export default function StateResults( props ) {
-    const [gpa, setGpa] = useState('');
-    const [college, setCollege] = useState('');
+    const user_data = props.navigation.getParam('user_data');
+    const [gpa, setGpa] = useState(original_gpa);
+    const [college, setCollege] = useState(original_college);
 
-
-    gpa_array = ['3.0 or more', 'Between 2.0 and 3.0', 'Lower than 2.0']
-    college_array = ['UC System', 'CSU System', 'Private College']
 
 
     return (
@@ -25,50 +27,42 @@ export default function StateResults( props ) {
             </Text>
             <View style={styles.pickerView}>
                 <Text style={styles.pickerText}>GPA</Text>
-                <DropDownPicker
+                <RNPickerSelect
+                    value={gpa}
+                    placeholder={{
+                        label: '3.0 or more', 
+                        value: '3.0 or more',
+                    }}
+                    onValueChange={item => setGpa(item.value)}
                     items={[
-                        {label: '3.0 or more', value: '3.0 or more'},
+                        //{label: '3.0 or more', value: '3.0 or more'},
                         {label: 'Between 2.0 and 3.0', value: 'Between 2.0 and 3.0'},
                         {label: 'Lower than 2.0', value: 'Lower than 2.0'},
                     ]}
-                    defaultValue={gpa}
-                    containerStyle={{height: 40}}
-                    style={{backgroundColor: '#fafafa'}}
-                    labelStyle={{
-                        fontSize: normalize(20),
-                        textAlign: 'center',
-                        color: '#000'
-                    }}
-                    itemStyle={{
-                        justifyContent: 'flex-start'
-                    }}
-                    dropDownStyle={{backgroundColor: '#fafafa'}}
-                    onChangeItem={item => setGpa(item.value)
-                    }
+                    style={styles.pickerStyles}
+                    Icon={() => {
+                        return <Chevron style={styles.chevron} size={2.5} color="black" />;
+                      }}
                 />
             </View>
             <View style={styles.pickerView}>
                 <Text style={styles.pickerText}>College System</Text>
-                <DropDownPicker
+                <RNPickerSelect
+                    value={college}
+                    placeholder={{
+                        label: 'UC', 
+                        value: 'UC',
+                    }}
+                    onValueChange={item => setCollege(item.value)}
                     items={[
-                        {label: 'UC', value: 'UC'},
+                        //{label: 'UC', value: 'UC'},
                         {label: 'CSU', value: 'CSU'},
                         {label: 'Private College', value: 'Private College'},
                     ]}
-                    defaultValue={college}
-                    containerStyle={{height: 40}}
-                    style={{backgroundColor: '#fafafa'}}
-                    labelStyle={{
-                        fontSize: normalize(20),
-                        textAlign: 'center',
-                        color: '#000'
-                    }}
-                    itemStyle={{
-                        justifyContent: 'flex-start'
-                    }}
-                    dropDownStyle={{backgroundColor: '#fafafa'}}
-                    onChangeItem={item => setCollege(item.value)
-                    }
+                    style={styles.pickerStyles}
+                    Icon={() => {
+                        return <Chevron style={styles.chevron} size={2.5} color="black" />;
+                      }}
                 />
             </View>
             <View style={styles.results}>
@@ -118,8 +112,8 @@ const styles = StyleSheet.create({
         paddingTop: normalize(70),
     },
     results: {
-        paddingTop: normalize(50),
-        paddingBottom: normalize(35),
+        paddingTop: normalize(30),
+        paddingBottom: normalize(50),
         flex: 0.6,
         justifyContent: "space-between",
     },
@@ -136,16 +130,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold'
     },
-    arrow: {
-        alignItems: 'flex-start',
-        marginLeft: normalize(10)
-    },
     firstSubtext: {
         fontSize: normalize(20),
         textAlign: 'center',
         paddingRight: normalize(5),
         paddingLeft: normalize(5),
-        paddingBottom: normalize(10),
+        paddingBottom: normalize(20),
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold'
     },
@@ -168,7 +158,7 @@ const styles = StyleSheet.create({
     secondSubtext: {
         fontSize: normalize(20),
         textAlign: 'center',
-        //paddingTop: normalize(10),
+        paddingTop: normalize(20),
         paddingRight: normalize(5),
         paddingLeft: normalize(5),
         fontFamily: 'Hoefler Text',
@@ -177,8 +167,10 @@ const styles = StyleSheet.create({
     pickerText: {
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold',
-        fontSize: normalize(25),
-        textAlign: 'center'
+        fontSize: normalize(20),
+        textAlign: 'center',
+        paddingBottom: normalize(10),
+        paddingTop: normalize(10)
     },
     nextSteps: {
         fontFamily: 'Hoefler Text',
@@ -195,8 +187,53 @@ const styles = StyleSheet.create({
     arrows: {
         flexDirection: "row",
         justifyContent: "space-between",
-        flex: 1,
+        flex: 0.4,
         alignItems: 'flex-end'
+    },
+    leftArrow: {
+        alignItems: 'flex-start',
+        marginLeft: normalize(10)
+    },
+    rightArrow: {
+        alignItems: 'flex-end',
+        marginRight: normalize(10),
+    },
+    pickerView: {
+        paddingTop: normalize(20)
+    },
+    pickerStyles: {
+        placeholder: {
+            color: 'black',
+            fontSize: normalize(16),
+            textAlign: 'center'
+        },
+        inputIOS: {
+            fontSize: normalize(16),
+            paddingVertical: 12,
+            paddingHorizontal: 10,
+            borderWidth: 4,
+            borderColor: '#5FA3B5',
+            borderRadius: 8,
+            color: 'black',
+            paddingRight: 30, // to ensure the text is never behind the icon
+            textAlign: 'center'
+          },
+          inputAndroid: {
+            fontSize: normalize(16),
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+            borderWidth: 4,
+            borderColor: '#5FA3B5',
+            borderRadius: 8,
+            color: 'black',
+            paddingRight: 30, // to ensure the text is never behind the icon
+            textAlign: 'center'
+          },
+    },
+    chevron: {
+        marginRight: normalize(20),
+        marginTop: normalize(15),
+        marginBottom: normalize(15),
     }
   });
 

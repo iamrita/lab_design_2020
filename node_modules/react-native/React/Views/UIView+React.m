@@ -35,12 +35,12 @@
   objc_setAssociatedObject(self, @selector(rootTag), rootTag, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSString *)nativeID
+- (NSNumber *)nativeID
 {
   return objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setNativeID:(NSString *)nativeID
+- (void)setNativeID:(NSNumber *)nativeID
 {
   objc_setAssociatedObject(self, @selector(nativeID), nativeID, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -48,19 +48,19 @@
 - (BOOL)shouldAccessibilityIgnoresInvertColors
 {
 #if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000 /* __IPHONE_11_0 */
-  if (@available(iOS 11.0, *)) {
-    return self.accessibilityIgnoresInvertColors;
-  }
+    if (@available(iOS 11.0, *)) {
+        return self.accessibilityIgnoresInvertColors;
+    }
 #endif
-  return NO;
+    return NO;
 }
 
 - (void)setShouldAccessibilityIgnoresInvertColors:(BOOL)shouldAccessibilityIgnoresInvertColors
 {
 #if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000 /* __IPHONE_11_0 */
-  if (@available(iOS 11.0, *)) {
-    self.accessibilityIgnoresInvertColors = shouldAccessibilityIgnoresInvertColors;
-  }
+    if (@available(iOS 11.0, *)) {
+        self.accessibilityIgnoresInvertColors = shouldAccessibilityIgnoresInvertColors;
+    }
 #endif
 }
 
@@ -135,12 +135,12 @@
 - (void)setReactLayoutDirection:(UIUserInterfaceLayoutDirection)layoutDirection
 {
   if ([self respondsToSelector:@selector(setSemanticContentAttribute:)]) {
-    self.semanticContentAttribute = layoutDirection == UIUserInterfaceLayoutDirectionLeftToRight
-        ? UISemanticContentAttributeForceLeftToRight
-        : UISemanticContentAttributeForceRightToLeft;
+    self.semanticContentAttribute =
+      layoutDirection == UIUserInterfaceLayoutDirectionLeftToRight ?
+        UISemanticContentAttributeForceLeftToRight :
+        UISemanticContentAttributeForceRightToLeft;
   } else {
-    objc_setAssociatedObject(
-        self, @selector(reactLayoutDirection), @(layoutDirection), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(reactLayoutDirection), @(layoutDirection), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
   }
 }
 
@@ -174,8 +174,7 @@
       // that original order is preserved.
       return NSOrderedAscending;
     }
-  }]
-                         : self.subviews;
+  }] : self.subviews;
 }
 
 - (void)didUpdateReactSubviews
@@ -199,14 +198,11 @@
   CGRect bounds = {CGPointZero, frame.size};
 
   // Avoid crashes due to nan coords
-  if (isnan(position.x) || isnan(position.y) || isnan(bounds.origin.x) || isnan(bounds.origin.y) ||
+  if (isnan(position.x) || isnan(position.y) ||
+      isnan(bounds.origin.x) || isnan(bounds.origin.y) ||
       isnan(bounds.size.width) || isnan(bounds.size.height)) {
-    RCTLogError(
-        @"Invalid layout for (%@)%@. position: %@. bounds: %@",
-        self.reactTag,
-        self,
-        NSStringFromCGPoint(position),
-        NSStringFromCGRect(bounds));
+    RCTLogError(@"Invalid layout for (%@)%@. position: %@. bounds: %@",
+                self.reactTag, self, NSStringFromCGPoint(position), NSStringFromCGRect(bounds));
     return;
   }
 
@@ -255,15 +251,13 @@
   objc_setAssociatedObject(self, @selector(reactIsFocusNeeded), @(isFocusNeeded), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)reactFocus
-{
+- (void)reactFocus {
   if (![self becomeFirstResponder]) {
     self.reactIsFocusNeeded = YES;
   }
 }
 
-- (void)reactFocusIfNeeded
-{
+- (void)reactFocusIfNeeded {
   if (self.reactIsFocusNeeded) {
     if ([self becomeFirstResponder]) {
       self.reactIsFocusNeeded = NO;
@@ -271,8 +265,7 @@
   }
 }
 
-- (void)reactBlur
-{
+- (void)reactBlur {
   [self resignFirstResponder];
 }
 
@@ -295,10 +288,11 @@
   UIEdgeInsets paddingInsets = self.reactPaddingInsets;
 
   return UIEdgeInsetsMake(
-      borderInsets.top + paddingInsets.top,
-      borderInsets.left + paddingInsets.left,
-      borderInsets.bottom + paddingInsets.bottom,
-      borderInsets.right + paddingInsets.right);
+    borderInsets.top + paddingInsets.top,
+    borderInsets.left + paddingInsets.left,
+    borderInsets.bottom + paddingInsets.bottom,
+    borderInsets.right + paddingInsets.right
+  );
 }
 
 - (CGRect)reactContentFrame
@@ -320,8 +314,7 @@
 
 - (void)setAccessibilityActions:(NSArray<NSDictionary *> *)accessibilityActions
 {
-  objc_setAssociatedObject(
-      self, @selector(accessibilityActions), accessibilityActions, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  objc_setAssociatedObject(self, @selector(accessibilityActions), accessibilityActions, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (NSString *)accessibilityRole
@@ -350,8 +343,7 @@
 }
 - (void)setAccessibilityValueInternal:(NSDictionary<NSString *, id> *)accessibilityValue
 {
-  objc_setAssociatedObject(
-      self, @selector(accessibilityValueInternal), accessibilityValue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  objc_setAssociatedObject(self, @selector(accessibilityValueInternal), accessibilityValue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 #pragma mark - Debug
@@ -377,3 +369,4 @@
 }
 
 @end
+

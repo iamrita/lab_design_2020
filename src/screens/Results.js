@@ -7,8 +7,10 @@ import {TouchableOpacity} from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-
 export default function Results( props ) {
+    const user_data = props.navigation.getParam('user_data');
+    const familyIncome = 'a'
+
     return (
         <View style={styles.container}>
             <Text style={styles.questionText}>
@@ -66,6 +68,25 @@ export default function Results( props ) {
                         </View>
                     </TouchableHighlight>
                 </View>
+                {((familyIncome === 'a') | (familyIncome === 'd') | (familyIncome == 'e')) &&
+                    <View style={styles.question}>
+                        <TouchableHighlight
+                            style={styles.EITCButton}
+                            >
+                            <View style={styles.buttonItems}>
+                                <Text style={styles.EITCText}>Earned Income Tax Credit</Text>
+                                <TouchableOpacity
+                                    style={styles.arrowButton}
+                                    onPress={() => 
+                                        props.navigation.navigate("EITC")
+                                    }
+                                >
+                                    <Ionicons name="ios-arrow-round-forward" size={normalize(70)} color="white" />
+                                </TouchableOpacity>
+                            </View>
+                            </TouchableHighlight>
+                        </View>
+                    }
             </View>
         </View>
     );
@@ -100,17 +121,19 @@ const styles = StyleSheet.create({
         color:'#fff',
         textAlign:'center',
         //paddingBottom: normalize(15),
-        paddingTop: normalize(20),
-        fontSize: normalize(20),
+        paddingTop: normalize(32),
+        fontSize: normalize(25),
         paddingLeft: normalize(20),
+        fontFamily: 'Hoefler Text',
     },
     stateText: {
         color:'#fff',
         textAlignVertical:'center',
         //paddingBottom: normalize(15),
-        paddingTop: normalize(20),
+        paddingTop: normalize(32),
         paddingLeft: normalize(20),
-        fontSize: normalize(20),
+        fontSize: normalize(25),
+        fontFamily: 'Hoefler Text',
     },
     otherText: {
         color:'#fff',
@@ -118,8 +141,19 @@ const styles = StyleSheet.create({
         //paddingBottom: normalize(15),
         paddingTop: normalize(20),
         //textAlign:'flex-start',
-        fontSize: normalize(20),
+        fontSize: normalize(25),
         paddingLeft: normalize(20),
+        fontFamily: 'Hoefler Text',
+    },
+    EITCText: {
+        color:'#fff',
+        textAlign:'center',
+        //paddingBottom: normalize(15),
+        paddingTop: normalize(20),
+        //textAlign:'flex-start',
+        fontSize: normalize(25),
+        paddingLeft: normalize(20),
+        fontFamily: 'Hoefler Text',
     },
     fedButton: {
         marginRight:20,
@@ -160,9 +194,22 @@ const styles = StyleSheet.create({
         borderColor: '#FFD581',
         backgroundColor: '#FFD581',
     },
+    EITCButton: {
+        marginRight:20,
+        marginLeft:12,
+        marginTop:10,
+        //paddingTop:30,
+        //paddingBottom:30,
+        justifyContent: "center",
+        borderRadius:80,
+        borderWidth: 10,
+        height: normalize(100),
+        borderColor: '#A6BD92',
+        backgroundColor: '#A6BD92',
+    },
     arrowButton: {
         //paddingBottom: normalize(5),
-        //paddingTop: normalize(5),
+        paddingTop: normalize(7),
     },
     buttonItems: {
         flex: 1,

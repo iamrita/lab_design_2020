@@ -7,9 +7,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons'; 
 import { createStackNavigator, createAppContainer } from 'react-navigation';  
 
+const original_employment = 'a'
 
 export default function EnrollmentType( props ) {
-    const [enrollmentType, setEnrollmentType] = useState('')
+    const user_data = props.navigation.getParam('user_data');
+    const [enrollmentType, setEnrollmentType] = useState(original_employment)
     const [firstButtonPress, setFirstButtonPress] = useState('unclicked')
     const [secondButtonPress, setSecondButtonPress] = useState('unclicked')
     const [thirdButtonPress, setThirdButtonPress] = useState('unclicked')
@@ -35,7 +37,7 @@ export default function EnrollmentType( props ) {
                                 setFirstButtonPress('clicked')
                                 setSecondButtonPress('unclicked')
                                 setThirdButtonPress('unclicked')
-                                setEnrollmentType('$26,000 or less')
+                                setEnrollmentType('a')
                             }
                             {if (firstButtonPress === 'clicked') {
                                 setFirstButtonPress('unclicked')
@@ -53,7 +55,7 @@ export default function EnrollmentType( props ) {
                                 setSecondButtonPress('clicked')
                                 setFirstButtonPress('unclicked')
                                 setThirdButtonPress('unclicked')
-                                setEnrollmentType('$26,001 to $92,100')
+                                setEnrollmentType('b')
                             }
                             {if (secondButtonPress === 'clicked') {
                                 setSecondButtonPress('unclicked')
@@ -71,7 +73,7 @@ export default function EnrollmentType( props ) {
                                 setThirdButtonPress('clicked')
                                 setSecondButtonPress('unclicked')
                                 setFirstButtonPress('unclicked')
-                                setEnrollmentType('More than $92,000')
+                                setEnrollmentType('c')
                             }
                             {if (thirdButtonPress === 'clicked') {
                                 setThirdButtonPress('unclicked')
@@ -84,9 +86,10 @@ export default function EnrollmentType( props ) {
             </View>
             <View style={styles.arrow}>
                 <TouchableOpacity
-                    onPress={() => 
-                        props.navigation.navigate("CollegeWork")
-                    }
+                    onPress={() => {
+                        user_data.set('enrollmentType', enrollmentType),
+                        props.navigation.navigate("CollegeWork", {user_data})
+                    }}
                 >
                     <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />
                 </TouchableOpacity>

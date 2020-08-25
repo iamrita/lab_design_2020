@@ -7,12 +7,15 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons'; 
 import { createStackNavigator, createAppContainer } from 'react-navigation';  
 import DropDownPicker from 'react-native-dropdown-picker';
+import RNPickerSelect, { defaultStyles } from 'react-native-picker-select';
+import { Chevron } from 'react-native-shapes';
 
-
+const original_size = 'Two'
 
 export default function SizeOfFamily( props ) {
-    const [sizeOfFamily, setSizeOfFamily] = useState('');
-    var family_sizes = ["Two", "Three", "Four", "Five", "Six or more"];
+    const user_data = props.navigation.getParam('user_data');
+    const [sizeOfFamily, setSizeOfFamily] = useState(original_size);
+    //var family_sizes = ["Two", "Three", "Four", "Five", "Six or more"];
 
 
     return (
@@ -22,23 +25,32 @@ export default function SizeOfFamily( props ) {
             </Text>
             <View style={styles.questions}>
                 <View style={styles.pickerView}>
-                    <Picker
-                        selectedValue={sizeOfFamily}
-                        mode='dropdown'
-                        style={styles.picker}
-                        onValueChange={(itemValue, itemIndex) => setSizeOfFamily(itemValue)}
-                    >                    
-                        {family_sizes.map((item, index) => {
-                            return (<Picker.Item label={item} value={index} key={index}/>) 
-                        })}
-                    </Picker>
+                    <RNPickerSelect
+                        value={sizeOfFamily}
+                        placeholder={{
+                            label: 'Two', 
+                            value: 'Two',
+                        }}
+                        onValueChange={item => setSizeOfFamily(item.value)}
+                        items={[
+                            {label: 'Three', value: 'Three'},
+                            {label: 'Four', value: 'Four'},
+                            {label: 'Five', value: 'Five'},
+                            {label: 'Six or more', value: 'Six or more'},
+                        ]}
+                        style={styles.pickerStyles}
+                        Icon={() => {
+                            return <Chevron style={styles.chevron} size={4} color="black" />;
+                        }}
+                    />
                 </View>
             </View>
             <View style={styles.arrow}>
                 <TouchableOpacity
-                    onPress={() => 
-                        props.navigation.navigate("EnrollmentType")
-                    }
+                    onPress={() => {
+                        user_data.set('sizeOfFamily', sizeOfFamily),
+                        props.navigation.navigate("FamIncome1", {user_data})
+                    }}
                 >
                     <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />
                 </TouchableOpacity>
@@ -107,6 +119,40 @@ const styles = StyleSheet.create({
     arrow: {
         alignItems: 'flex-end',
         marginRight: normalize(10)
+    },
+    pickerStyles: {
+        placeholder: {
+            color: 'black',
+            fontSize: 35,
+            textAlign: 'center'
+        },
+        inputIOS: {
+            fontSize: 35,
+            paddingVertical: 40,
+            paddingHorizontal: 20,
+            borderWidth: 8,
+            borderColor: '#5FA3B5',
+            borderRadius: 8,
+            color: 'black',
+            paddingRight: 30, // to ensure the text is never behind the icon
+            textAlign: 'center'
+          },
+          inputAndroid: {
+            fontSize: 35,
+            paddingVertical: 40,
+            paddingHorizontal: 20,
+            borderWidth: 8,
+            borderColor: '#5FA3B5',
+            borderRadius: 8,
+            color: 'black',
+            paddingRight: 30, // to ensure the text is never behind the icon
+            textAlign: 'center'
+          },
+    },
+    chevron: {
+        marginRight: normalize(20),
+        marginTop: normalize(45),
+        marginBottom: normalize(45),
     }
   });
   

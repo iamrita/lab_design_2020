@@ -2,14 +2,16 @@ import React from "react";
 import {View, Text, StyleSheet, TextInput, Image, TouchableOpacity} from "react-native";
 
 const WelcomeScreen = (props) => { // change screen name
-  const firstName = props.navigation.getParam('name')
+  //const firstName = props.navigation.getParam('name');
+  const user_data = props.navigation.getParam('user_data');
+  const user_data_name = user_data.get('name')
+
    return (
        <View style={styles.container}>
-        
-        <Text style={styles.text}>Welcome {firstName}!</Text>
+        <Text style={styles.text}>Welcome {user_data_name}!</Text>
         <Image style={styles.image} source={require('../../assets/student.png')}/>
 
-        <TouchableOpacity onPress={() => props.navigation.navigate('FamilialIncome1')}style={styles.outerButton}><Text style={styles.button}>Get me my college cash!</Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigation.navigate('SizeOfFamily', {user_data})}style={styles.outerButton}><Text style={styles.button}>Get me my college cash!</Text></TouchableOpacity>
      
 
        </View>

@@ -9,10 +9,13 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 
 export default function OtherResults( props ) {
+    const user_data = props.navigation.getParam('user_data');
+
+
     return (
         <View style={styles.container}>
             <Text style={styles.titleText}>
-                Other cash for students
+                Other Cash for Students
             </Text>
             <View style={styles.results}>
                 <Text style={styles.firstSubtext}>
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
         paddingTop: normalize(70),
     },
     results: {
-        paddingTop: normalize(50),
+        paddingTop: normalize(80),
         paddingBottom: normalize(35),
         flex: 0.6,
         justifyContent: "space-between",
@@ -78,10 +81,6 @@ const styles = StyleSheet.create({
         paddingLeft: normalize(5),
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold'
-    },
-    arrow: {
-        alignItems: 'flex-start',
-        marginLeft: normalize(10)
     },
     firstSubtext: {
         fontSize: normalize(20),
@@ -111,11 +110,40 @@ const styles = StyleSheet.create({
     secondSubtext: {
         fontSize: normalize(20),
         textAlign: 'center',
-        //paddingTop: normalize(10),
+        paddingTop: normalize(10),
         paddingRight: normalize(5),
         paddingLeft: normalize(5),
         fontFamily: 'Hoefler Text',
         fontWeight: 'bold'
     },
+<<<<<<< Updated upstream
+=======
+    nextSteps: {
+        fontFamily: 'Hoefler Text',
+        fontWeight: 'bold',
+        marginRight: normalize(5),
+        fontSize: normalize(15),
+    },
+    backToResults: {
+        fontFamily: 'Hoefler Text',
+        fontWeight: 'bold',
+        marginLeft: normalize(5),
+        fontSize: normalize(15),
+    },
+    arrows: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        flex: 1,
+        alignItems: 'flex-end'
+    },
+    leftArrow: {
+        alignItems: 'flex-start',
+        marginLeft: normalize(10)
+    },
+    rightArrow: {
+        alignItems: 'flex-end',
+        marginRight: normalize(10)
+    },
+>>>>>>> Stashed changes
   });
 

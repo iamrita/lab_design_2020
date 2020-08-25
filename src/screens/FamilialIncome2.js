@@ -7,9 +7,21 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons'; 
 import { createStackNavigator, createAppContainer } from 'react-navigation';  
 
+const original_family_income = 'd'
+
 
 export default function FamilialIncome2( props ) {
-    const [familyIncome, setFamilyIncome] = useState('')
+    const user_data = props.navigation.getParam('user_data');
+    const sizeOfFamily = user_data.get('sizeOfFamily');
+    const income_amounts = props.navigation.getParam('income_amounts')
+    const lowMid = income_amounts.get('lowMid')
+    const midMid = income_amounts.get('midMid')
+    if (sizeOfFamily != 'Six or more') {
+        const highMid = income_amounts.get('highMid')
+    }
+
+
+    const [familyIncome, setFamilyIncome] = useState(original_family_income)
     const [firstButtonPress, setFirstButtonPress] = useState('unclicked')
     const [secondButtonPress, setSecondButtonPress] = useState('unclicked')
     const [thirdButtonPress, setThirdButtonPress] = useState('unclicked')
@@ -35,14 +47,14 @@ export default function FamilialIncome2( props ) {
                                 setFirstButtonPress('clicked')
                                 setSecondButtonPress('unclicked')
                                 setThirdButtonPress('unclicked')
-                                setFamilyIncome('$26,001 to $43,001')
+                                setFamilyIncome('d')
                             }
                             {if (firstButtonPress === 'clicked') {
                                 setFirstButtonPress('unclicked')
                             }
                         }}
                         }>
-                        <Text style={first_text}>$26,001 to $43,001</Text>   
+                        <Text style={first_text}>{lowMid}</Text>   
                     </TouchableHighlight>
                 </View>
                 <View style={styles.question}>
@@ -53,17 +65,19 @@ export default function FamilialIncome2( props ) {
                                 setSecondButtonPress('clicked')
                                 setFirstButtonPress('unclicked')
                                 setThirdButtonPress('unclicked')
-                                setFamilyIncome('$26,001 to $92,100')
+                                setFamilyIncome('e')
                             }
                             {if (secondButtonPress === 'clicked') {
                                 setSecondButtonPress('unclicked')
                             }
                         }}
                         }>
-                        <Text style={second_text}>$43,001 to $65,000</Text>   
+                        <Text style={second_text}>{midMid}</Text>   
                     </TouchableHighlight>
                 </View>
-                <View style={styles.question}>
+                {
+                    sizeOfFamily != 'Six or more' &&
+                    <View style={styles.question}>
                     <TouchableHighlight 
                         style={third_button}
                         onPress={() => 
@@ -71,22 +85,24 @@ export default function FamilialIncome2( props ) {
                                 setThirdButtonPress('clicked')
                                 setSecondButtonPress('unclicked')
                                 setFirstButtonPress('unclicked')
-                                setFamilyIncome('More than $92,000')
+                                setFamilyIncome('f')
                             }
                             {if (thirdButtonPress === 'clicked') {
                                 setThirdButtonPress('unclicked')
                             }
                         }}
                         }>
-                        <Text style={third_text}>$65,000 to $92,100</Text>   
+                        <Text style={third_text}>{highMid}</Text>   
                 </TouchableHighlight>
                 </View>
+                }
             </View>
             <View style={styles.arrow}>
                 <TouchableOpacity
-                    onPress={() => 
-                        props.navigation.navigate("SizeOfFamily")
-                    }
+                    onPress={() => {
+                        user_data.set('familyIncome', familyIncome),
+                        props.navigation.navigate("EnrollmentType", {user_data})
+                    }}
                 >
                     <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />
                 </TouchableOpacity>

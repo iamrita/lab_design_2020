@@ -7,9 +7,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons'; 
 import { createStackNavigator, createAppContainer } from 'react-navigation';  
 
+const original_work = 'a'
+
 
 export default function CollegeWork( props ) {
-    const [collegeWork, setCollegeWork] = useState('')
+    const user_data = props.navigation.getParam('user_data');
+    const [collegeWork, setCollegeWork] = useState(original_work)
     const [firstButtonPress, setFirstButtonPress] = useState('unclicked')
     const [secondButtonPress, setSecondButtonPress] = useState('unclicked')
     const [thirdButtonPress, setThirdButtonPress] = useState('unclicked')
@@ -20,6 +23,8 @@ export default function CollegeWork( props ) {
     const second_text = secondButtonPress === 'clicked'? styles.clickedText : styles.unclickedText
     const third_button = thirdButtonPress === 'clicked'? styles.clickedButton : styles.unclickedButton
     const third_text = thirdButtonPress === 'clicked'? styles.clickedText : styles.unclickedText
+
+    
 
     return (
         <View style={styles.container}>
@@ -35,7 +40,7 @@ export default function CollegeWork( props ) {
                                 setFirstButtonPress('clicked')
                                 setSecondButtonPress('unclicked')
                                 setThirdButtonPress('unclicked')
-                                setCollegeWork('$26,000 or less')
+                                setCollegeWork('a')
                             }
                             {if (firstButtonPress === 'clicked') {
                                 setFirstButtonPress('unclicked')
@@ -53,7 +58,7 @@ export default function CollegeWork( props ) {
                                 setSecondButtonPress('clicked')
                                 setFirstButtonPress('unclicked')
                                 setThirdButtonPress('unclicked')
-                                setCollegeWork('$26,001 to $92,100')
+                                setCollegeWork('b')
                             }
                             {if (secondButtonPress === 'clicked') {
                                 setSecondButtonPress('unclicked')
@@ -71,7 +76,7 @@ export default function CollegeWork( props ) {
                                 setThirdButtonPress('clicked')
                                 setSecondButtonPress('unclicked')
                                 setFirstButtonPress('unclicked')
-                                setCollegeWork('More than $92,000')
+                                setCollegeWork('c')
                             }
                             {if (thirdButtonPress === 'clicked') {
                                 setThirdButtonPress('unclicked')
@@ -84,9 +89,10 @@ export default function CollegeWork( props ) {
             </View>
             <View style={styles.arrow}>
                 <TouchableOpacity
-                    onPress={() => 
-                        props.navigation.navigate("Results")
-                    }
+                    onPress={() => {
+                        user_data.set('collegeWork', collegeWork),
+                        props.navigation.navigate("TotalAid", {user_data})
+                    }}
                 >
                     <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />
                 </TouchableOpacity>

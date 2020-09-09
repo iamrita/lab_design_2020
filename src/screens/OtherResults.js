@@ -15,7 +15,7 @@ export default function OtherResults( props ) {
     return (
         <View style={styles.container}>
             <Text style={styles.titleText}>
-                Other Cash for Students
+                Other Cash
             </Text>
             <View style={styles.results}>
                 <Text style={styles.firstSubtext}>
@@ -27,7 +27,7 @@ export default function OtherResults( props ) {
                     </Text>
                 </View>
                 <Text style={styles.secondSubtext}>
-                    through the Pell Grant!
+                    through food and other basics needs assistance!
                 </Text>
             </View>
             <View style={styles.arrows}>
@@ -42,7 +42,7 @@ export default function OtherResults( props ) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.rightArrow}>
-                    <Text style={styles.nextSteps}>Next Steps</Text>
+                    <Text style={styles.nextSteps}>More Cash</Text>
                     <TouchableOpacity
                         onPress={() =>
                             props.navigation.navigate("Apply")

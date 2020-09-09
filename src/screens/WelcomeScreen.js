@@ -1,5 +1,6 @@
 import React from "react";
 import {View, Text, StyleSheet, TextInput, Image, TouchableOpacity} from "react-native";
+import normalize from "../../normalizeSize";
 
 const WelcomeScreen = (props) => { // change screen name
   const user_data = props.navigation.getParam('user_data');
@@ -7,12 +8,14 @@ const WelcomeScreen = (props) => { // change screen name
 
    return (
        <View style={styles.container}>
-        <Text style={styles.text}>Welcome {user_data_name}!</Text>
-        <Image style={styles.image} source={require('../../assets/student.png')}/>
+           <View>
+                <Text style={styles.text}>Welcome</Text>
+                <Text style={styles.text}>{user_data_name}!</Text>
+           </View>
+            <Image style={styles.image} source={require('../../assets/group_of_students.jpg')}/>
 
-        <TouchableOpacity onPress={() => props.navigation.navigate('SizeOfFamily', {user_data})}style={styles.outerButton}><Text style={styles.button}>Get me my college cash!</Text></TouchableOpacity>
-     
-
+            <TouchableOpacity onPress={() => props.navigation.navigate('SizeOfFamily', {user_data})}style={styles.outerButton}><Text style={styles.button}>Get me my college cash!</Text></TouchableOpacity>
+        
        </View>
    )
 };
@@ -21,24 +24,25 @@ const WelcomeScreen = (props) => { // change screen name
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     backgroundColor: 'white',
     height: '100%',
-    padding:10
+    paddingTop:normalize(70),
+    paddingBottom: normalize(100)
   },
   text: {
     fontFamily: 'Hoefler Text',
     fontWeight:'bold',
     fontSize:45,
-    margin:25,
-    textAlign:'center'
+    marginLeft:25,
+    marginRight:25,
+    textAlign:'center',
+    marginBottom: 20,
   },
-  button: {
-    
+  button: { 
     color: 'white',
     fontFamily: 'Hoefler Text',
     fontSize: 20,
- 
   
   },
   outerButton: {
@@ -51,9 +55,10 @@ const styles = StyleSheet.create({
     marginTop: 50
   },
   image: {
-    width: 300,
-    height: 400,
-    paddingBottom:200,
+    paddingTop: 120,
+    width: 400,
+    height: 100,
+    paddingBottom:250,
   }
  
   

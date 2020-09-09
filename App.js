@@ -9,7 +9,6 @@ import React, {Component} from 'react';
 import {createAppContainer} from "react-navigation";
 import {createStackNavigator} from "react-navigation-stack";
 import FedResultsScreen from "./src/screens/FedResults";
-import KnowledgeScreen from './src/screens/KnowledgeScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen'
 import ApplyScreen from './src/screens/ApplyScreen';
 import TotalAidScreen from './src/screens/TotalAidScreen';
@@ -38,7 +37,6 @@ const AppSwitchNavigator = createStackNavigator(
   {    
     Home: {screen: HomeScreen, navigationOptions: {headerShown: false}},
     IntroQuestion: {screen: IntroQuestionScreen, navigationOptions: {headerShown: false} },
-    Knowledge: {screen: KnowledgeScreen, navigationOptions: {headerShown: false} },
     Welcome: {screen: WelcomeScreen, navigationOptions: {headerShown: false} },
     TotalAid: {screen: TotalAidScreen, navigationOptions: {headerShown: false} },
     FamIncome1: {screen: FamilialIncome1Screen, navigationOptions: {headerShown: false} },

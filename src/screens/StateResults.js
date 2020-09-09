@@ -75,7 +75,7 @@ export default function StateResults( props ) {
                     </Text>
                 </View>
                 <Text style={styles.secondSubtext}>
-                    through the Pell Grant!
+                    through Cal Grants!
                 </Text>
             </View>
             <View style={styles.arrows}>
@@ -90,7 +90,7 @@ export default function StateResults( props ) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.rightArrow}>
-                    <Text style={styles.nextSteps}>Next Steps</Text>
+                    <Text style={styles.nextSteps}>More Cash</Text>
                     <TouchableOpacity
                         onPress={() =>
                             props.navigation.navigate("Apply")

@@ -39,7 +39,7 @@ export default function FamilialIncome2( props ) {
     return (
         <View style={styles.container}>
             <Text style={styles.questionText}>
-                Where in that range does your family fall?
+                Let's get more specific!
             </Text>
             <View style={styles.questions}>
                 <View style={styles.question}>

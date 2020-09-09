@@ -9,9 +9,13 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 const original_family_income = 'a'
 
+
+
 export default function FamilialIncome1( props ) {
     const user_data = props.navigation.getParam('user_data');
-    const sizeOfFamily = user_data.get(sizeOfFamily);
+    const sizeOfFamily = user_data.get("sizeOfFamily");
+
+    const income_amounts = props.navigation.getParam('income_amounts');
 
     const [familyIncome, setFamilyIncome] = useState(original_family_income)
     const [firstButtonPress, setFirstButtonPress] = useState('unclicked')
@@ -26,49 +30,11 @@ export default function FamilialIncome1( props ) {
     const third_text = thirdButtonPress === 'clicked'? styles.clickedText : styles.unclickedText
 
 
-    const income_amounts = new Map();
-    const [firstMid, setFirstMid] = useState('$26,001 to $92,100')
-    const [firstHigh, setFirstHigh] = useState('More than $92,100')
+    //const [firstMid, setFirstMid] = useState('$26,001 to $92,100')
+    //const [firstHigh, setFirstHigh] = useState('More than $92,100')
 
-    if (sizeOfFamily === 'Two') {
-        setFirstMid('$26,001 to $92,100')
-        setFirstHigh('More than $92,100')
-        income_amounts.set('lowMid', '$26,001 to $43,000')
-        income_amounts.set('midMid', '$43,001 to $65,000')
-        income_amounts.set('highMid', '$65,000 to $92,100')
-    }
-
-    if (sizeOfFamily === 'Three') {
-        setFirstMid('$26,001 to $94,400')
-        setFirstHigh('More than $94,400')
-        income_amounts.set('lowMid', '$26,001 to $48,500')
-        income_amounts.set('midMid', '$48,500 to $65,000')
-        income_amounts.set('highMid', '$65,000 to $94,400')
-    }
-
-    if (sizeOfFamily === 'Four') {
-        setFirstMid('$26,001 to $102,500')
-        setFirstHigh('More than $102,500')
-        income_amounts.set('lowMid', '$26,001 to $53,900')
-        income_amounts.set('midMid', '$53,900 to $65,000')
-        income_amounts.set('highMid', '$65,000 to $102,500')
-    }
-
-    if (sizeOfFamily === 'Five') {
-        setFirstMid('$26,001 to $109,900')
-        setFirstHigh('More than $109,900')
-        income_amounts.set('lowMid', '$26,001 to $60,300')
-        income_amounts.set('midMid', '$60,300 to $65,000')
-        income_amounts.set('highMid', '$65,000 to $109,900')
-    }
-
-    if (sizeOfFamily === 'Six or more') {
-        setFirstMid('$26,001 to $118,500')
-        setFirstHigh('More than $118,500')
-        income_amounts.set('lowMid', '$26,001 to $65,000')
-        income_amounts.set('midMid', '$65,000 to $118,500')
-    }
-
+    const firstMid = income_amounts.get('firstMid')
+    const firstHigh = income_amounts.get('firstHigh')
 
 
     return (

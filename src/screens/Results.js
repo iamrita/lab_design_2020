@@ -14,7 +14,7 @@ export default function Results( props ) {
     return (
         <View style={styles.container}>
             <Text style={styles.questionText}>
-                There are 3 types of aid you’re eligible for:
+                You could be eligible for 4 types of aid:
             </Text>
             <View style={styles.questions}>
             <View style={styles.question}>
@@ -56,7 +56,7 @@ export default function Results( props ) {
                         style={styles.otherButton}
                         >
                         <View style={styles.buttonItems}>
-                            <Text style={styles.otherText}>Other Cash for Students</Text>
+                            <Text style={styles.otherText}>Other Cash</Text>
                             <TouchableOpacity
                                 style={styles.arrowButton}
                                 onPress={() => 
@@ -137,12 +137,11 @@ const styles = StyleSheet.create({
     },
     otherText: {
         color:'#fff',
-        textAlign:'center',
+        textAlignVertical:'center',
         //paddingBottom: normalize(15),
-        paddingTop: normalize(20),
-        //textAlign:'flex-start',
-        fontSize: normalize(25),
+        paddingTop: normalize(32),
         paddingLeft: normalize(20),
+        fontSize: normalize(25),
         fontFamily: 'Hoefler Text',
     },
     EITCText: {

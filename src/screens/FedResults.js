@@ -45,7 +45,7 @@ export default function FedResults( props ) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.rightArrow}>
-                    <Text style={styles.nextSteps}>Next Steps</Text>
+                    <Text style={styles.nextSteps}>More Cash</Text>
                     <TouchableOpacity
                         onPress={() =>
                             props.navigation.navigate("Apply")

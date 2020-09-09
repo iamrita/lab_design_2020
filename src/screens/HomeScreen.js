@@ -8,7 +8,7 @@ const HomeScreen = (props) => { // change screen name
     return (
        <View style={styles.container}>
         <Image style={styles.image} source={require('../../assets/4cfz19.gif')}/>
-        <Text style={styles.text}>CollegeBound</Text>
+        <Text style={styles.text}>My College Cash</Text>
         <TouchableOpacity onPress={() => props.navigation.navigate('IntroQuestion', {user_data})}>
             <Feather style={styles.icon} name="arrow-right-circle"/>
         </TouchableOpacity>

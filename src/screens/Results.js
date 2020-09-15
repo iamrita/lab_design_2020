@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, Component} from "react";
 import { Text, StyleSheet, Button, TouchableHighlight, View, Image } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { Dimensions, Platform, PixelRatio } from 'react-native';
@@ -7,9 +7,12 @@ import {TouchableOpacity} from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
+
 export default function Results( props ) {
     const user_data = props.navigation.getParam('user_data');
-    const familyIncome = 'a'
+    const user_results = props.navigation.getParam('user_results');
+
+    const familyIncome = user_data.get('familyIncome')
 
     return (
         <View style={styles.container}>
@@ -26,7 +29,7 @@ export default function Results( props ) {
                             <TouchableOpacity
                                 style={styles.arrowButton}
                                 onPress={() => 
-                                    props.navigation.navigate("FedResults")
+                                    props.navigation.navigate("FedResults", {user_results})
                                 }
                             >
                                 <Ionicons name="ios-arrow-round-forward" size={normalize(70)} color="white" />
@@ -43,7 +46,7 @@ export default function Results( props ) {
                             <TouchableOpacity
                                 style={styles.arrowButton}
                                 onPress={() => 
-                                    props.navigation.navigate("StateResults")
+                                    props.navigation.navigate("StateResults", {user_results})
                                 }
                             >
                                 <Ionicons name="ios-arrow-round-forward" size={normalize(70)} color="white" />
@@ -60,7 +63,7 @@ export default function Results( props ) {
                             <TouchableOpacity
                                 style={styles.arrowButton}
                                 onPress={() => 
-                                    props.navigation.navigate("OtherResults")
+                                    props.navigation.navigate("OtherResults", {user_results})
                                 }
                             >
                                 <Ionicons name="ios-arrow-round-forward" size={normalize(70)} color="white" />
@@ -78,7 +81,7 @@ export default function Results( props ) {
                                 <TouchableOpacity
                                     style={styles.arrowButton}
                                     onPress={() => 
-                                        props.navigation.navigate("EITC")
+                                        props.navigation.navigate("EITC", {user_results})
                                     }
                                 >
                                     <Ionicons name="ios-arrow-round-forward" size={normalize(70)} color="white" />

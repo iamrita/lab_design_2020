@@ -10,14 +10,14 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 export default function EITC( props ) {
     const user_data = props.navigation.getParam('user_data');
-    const familyIncome = '$26,000 or less'
+    const familyIncome = 'a'
 
     return (
         <View style={styles.container}>
             <Text style={styles.titleText}>
                 Earned Income Tax Credit
             </Text>
-            { ((familyIncome==='$26,000 or less') | (familyIncome==='$26,001 to $43,001')) &&
+            { ((familyIncome==='a') | (familyIncome==='d')) &&
                 <View style={styles.results}>
                     <Text style={styles.firstTopSubtext}>
                         Based on income your family might be eligible for the EITC and CalEITC! 
@@ -38,7 +38,7 @@ export default function EITC( props ) {
                     </Text>
                 </View>
             }
-            { (familyIncome == '$43,001 to $65,000') &&
+            { (familyIncome == 'e') &&
                 <View style={styles.results}>
                 <Text style={styles.topSubtext}>
                     Based on income your family might be eligible for the EITC!
@@ -74,7 +74,7 @@ export default function EITC( props ) {
                     <Text style={styles.nextSteps}>More Cash</Text>
                     <TouchableOpacity
                         onPress={() =>
-                            props.navigation.navigate("Apply")
+                            props.navigation.navigate("Share")
                         }
                     >
                         <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />

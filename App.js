@@ -49,9 +49,8 @@ const AppSwitchNavigator = createStackNavigator(
     StateResults: {screen: StateResultsScreen, navigationOptions: {headerShown: false} },
     OtherResults: {screen: OtherResultsScreen, navigationOptions: {headerShown: false} },
     EITC: {screen: EITCScreen, navigationOptions: {headerShown: false} },
-    Apply: {screen: ApplyScreen, navigationOptions: {headerShown: false} },
     Share: {screen: ShareScreen, navigationOptions: {headerShown: false} },
-
+    Apply: {screen: ApplyScreen, navigationOptions: {headerShown: false} },
 
   },
   

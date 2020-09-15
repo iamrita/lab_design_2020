@@ -6,6 +6,7 @@ import {TouchableOpacity} from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons'; 
 import { createStackNavigator, createAppContainer } from 'react-navigation';  
+import SizeOfFamily from "./SizeOfFamily.js";
 
 const original_work = 'a'
 
@@ -24,7 +25,14 @@ export default function CollegeWork( props ) {
     const third_button = thirdButtonPress === 'clicked'? styles.clickedButton : styles.unclickedButton
     const third_text = thirdButtonPress === 'clicked'? styles.clickedText : styles.unclickedText
 
+    const familyIncome = user_data.get('familyIncome')
+    const sizeOfFamily = user_data.get('sizeOfFamily')
+    const enrollmentType = user_data.get('enrollmentType')
+
+    const user_results = new Map();
     
+    const [totalAid, setTotalAid] = useState(0)
+
 
     return (
         <View style={styles.container}>
@@ -45,6 +53,99 @@ export default function CollegeWork( props ) {
                             {if (firstButtonPress === 'clicked') {
                                 setFirstButtonPress('unclicked')
                             }
+                                                        // calculate federal aid eligibility
+                        if (familyIncome === 'a') {
+                            user_results.set('federalAid', 'a')
+                            user_results.set('federalAidAmount', '$6,195')
+                            setTotalAid(totalAid + 6195)
+                        }
+
+                        if ((familyIncome === 'd') | (familyIncome === 'e')) {
+                            user_results.set('federalAid', 'b')
+                            user_results.set('federalAidAmount', '$3,000')
+                            setTotalAid(totalAid + 3000)
+                        }
+
+                        if ((familyIncome === 'f') | (familyIncome === 'c')) {
+                            user_results.set('federalAid', 'c')
+                            user_results.set('federalAidAmount', '$350')
+                            setTotalAid(totalAid + 350)
+                        }
+
+                        // calculate state aid eligibility
+
+                        if ((familyIncome === 'a') | (familyIncome === 'd')) {
+                            user_results.set('stateAid', 'a')
+                            user_results.set('stateAidAmount', '$12,570')
+                            setTotalAid(totalAid + 12570)
+                        }
+
+                        if ((familyIncome === 'e') | (familyIncome === 'f') | (familyIncome === 'g')) {
+                            user_results.set('stateAid', 'b')
+                            user_results.set('stateAidAmount', '$12,570')
+                            setTotalAid(totalAid + 12570)
+                        }
+
+                        if (familyIncome === 'c') {
+                            user_results.set('stateAid', 'c')
+                            user_results.set('stateAidAmount', '$5,028')
+                            setTotalAid(totalAid + 5028)
+                        }
+
+
+                        // calculate EITC eligibility 
+
+                        if ((familyIncome === 'a') | (familyIncome === 'd')) {
+                            user_results.set('eitcAid', 'a')
+                            user_results.set('eitcAidAmount', '$3,141')
+                            setTotalAid(totalAid + 3141)
+                        }
+                        if (familyIncome === 'e') {
+                            user_results.set('eitcAid', 'b')
+                            user_results.set('eitcAidAmount', '$1000')
+                            setTotalAid(totalAid + 1000)
+                        }
+                        if ((familyIncome === 'b') | (familyIncome === 'c') | (familyIncome === 'f')) {
+                            user_results.set('eitcAid', 'c')
+                            user_results.set('eitcAidAmount', '$0')
+                        }
+                        if (enrollmentType === 'c') {
+                            user_results.set('otherAid', 'a')
+                            user_results.set('otherAidAmount', '$0')
+                            setTotalAid(totalAid)
+                        }
+                        if ((enrollmentType === 'a') | (enrollmentType === 'b')) {
+                    
+                            if ((familyIncome === 'a') | (familyIncome === 'd')) {
+                                user_results.set('otherAid', 'b')
+
+                                if (sizeOfFamily === 'Two') {
+                                    user_results.set('otherAidAmount', '$4,260')
+                                    setTotalAid(totalAid + 4260)
+                                }
+                                if (sizeOfFamily === 'Three') {
+                                    user_results.set('otherAidAmount', '$6,108')
+                                    setTotalAid(totalAid + 6108)
+                                }
+                                if (sizeOfFamily === 'Four') {
+                                    user_results.set('otherAidAmount', '$7,752')
+                                    setTotalAid(totalAid + 7752)
+                                }
+                                if (sizeOfFamily === 'Five') {
+                                    user_results.set('otherAidAmount', '$9,216')
+                                    setTotalAid(totalAid + 9216)
+                                }
+                                if (sizeOfFamily === 'Six or more') {
+                                    user_results.set('otherAidAmount', '$11,052')
+                                    setTotalAid(totalAid + 11052)
+                                }
+                            }
+                            else {
+                                user_results.set('otherAid', 'c')
+                                user_results.set('otherAidAmount', '$0')
+                                setTotalAid(totalAid)
+                            }
+                        }
                         }}
                         }>
                         <Text style={first_text}>20 hours/week or more</Text>   
@@ -63,6 +164,66 @@ export default function CollegeWork( props ) {
                             {if (secondButtonPress === 'clicked') {
                                 setSecondButtonPress('unclicked')
                             }
+
+                        // calculate federal aid eligibility
+                        if (familyIncome === 'a') {
+                            user_results.set('federalAid', 'a')
+                            user_results.set('federalAidAmount', '$6,195')
+                            setTotalAid(totalAid + 6195)
+                        }
+
+                        if ((familyIncome === 'd') | (familyIncome === 'e')) {
+                            user_results.set('federalAid', 'b')
+                            user_results.set('federalAidAmount', '$3,000')
+                            setTotalAid(totalAid + 3000)
+                        }
+
+                        if ((familyIncome === 'f') | (familyIncome === 'c')) {
+                            user_results.set('federalAid', 'c')
+                            user_results.set('federalAidAmount', '$350')
+                            setTotalAid(totalAid + 350)
+                        }
+
+                        // calculate state aid eligibility
+
+                        if ((familyIncome === 'a') | (familyIncome === 'd')) {
+                            user_results.set('stateAid', 'a')
+                            user_results.set('stateAidAmount', '$12,570')
+                            setTotalAid(totalAid + 12570)
+                        }
+
+                        if ((familyIncome === 'e') | (familyIncome === 'f') | (familyIncome === 'g')) {
+                            user_results.set('stateAid', 'b')
+                            user_results.set('stateAidAmount', '$12,570')
+                            setTotalAid(totalAid + 12570)
+                        }
+
+                        if (familyIncome === 'c') {
+                            user_results.set('stateAid', 'c')
+                            user_results.set('stateAidAmount', '$5,028')
+                            setTotalAid(totalAid + 5028)
+                        }
+
+
+                        // calculate EITC eligibility 
+
+                        if ((familyIncome === 'a') | (familyIncome === 'd')) {
+                            user_results.set('eitcAid', 'a')
+                            user_results.set('eitcAidAmount', '$3,141')
+                            setTotalAid(totalAid + 3141)
+                        }
+                        if (familyIncome === 'e') {
+                            user_results.set('eitcAid', 'b')
+                            user_results.set('eitcAidAmount', '$1000')
+                            setTotalAid(totalAid + 1000)
+                        }
+                        if ((familyIncome === 'b') | (familyIncome === 'c') | (familyIncome === 'f')) {
+                            user_results.set('eitcAid', 'c')
+                            user_results.set('eitcAidAmount', '$0')
+                        }
+                        user_results.set('otherAid', 'a')
+                        user_results.set('otherAidAmount', '$0')
+                        setTotalAid(totalAid)
                         }}
                         }>
                         <Text style={second_text}>Less than 20 hours/week</Text>   
@@ -81,6 +242,99 @@ export default function CollegeWork( props ) {
                             {if (thirdButtonPress === 'clicked') {
                                 setThirdButtonPress('unclicked')
                             }
+                                                    // calculate federal aid eligibility
+                        if (familyIncome === 'a') {
+                            user_results.set('federalAid', 'a')
+                            user_results.set('federalAidAmount', '$6,195')
+                            setTotalAid(totalAid + 6195)
+                        }
+
+                        if ((familyIncome === 'd') | (familyIncome === 'e')) {
+                            user_results.set('federalAid', 'b')
+                            user_results.set('federalAidAmount', '$3,000')
+                            setTotalAid(totalAid + 3000)
+                        }
+
+                        if ((familyIncome === 'f') | (familyIncome === 'c')) {
+                            user_results.set('federalAid', 'c')
+                            user_results.set('federalAidAmount', '$350')
+                            setTotalAid(totalAid + 350)
+                        }
+
+                        // calculate state aid eligibility
+
+                        if ((familyIncome === 'a') | (familyIncome === 'd')) {
+                            user_results.set('stateAid', 'a')
+                            user_results.set('stateAidAmount', '$12,570')
+                            setTotalAid(totalAid + 12570)
+                        }
+
+                        if ((familyIncome === 'e') | (familyIncome === 'f') | (familyIncome === 'g')) {
+                            user_results.set('stateAid', 'b')
+                            user_results.set('stateAidAmount', '$12,570')
+                            setTotalAid(totalAid + 12570)
+                        }
+
+                        if (familyIncome === 'c') {
+                            user_results.set('stateAid', 'c')
+                            user_results.set('stateAidAmount', '$5,028')
+                            setTotalAid(totalAid + 5028)
+                        }
+
+
+                        // calculate EITC eligibility 
+
+                        if ((familyIncome === 'a') | (familyIncome === 'd')) {
+                            user_results.set('eitcAid', 'a')
+                            user_results.set('eitcAidAmount', '$3,141')
+                            setTotalAid(totalAid + 3141)
+                        }
+                        if (familyIncome === 'e') {
+                            user_results.set('eitcAid', 'b')
+                            user_results.set('eitcAidAmount', '$1000')
+                            setTotalAid(totalAid + 1000)
+                        }
+                        if ((familyIncome === 'b') | (familyIncome === 'c') | (familyIncome === 'f')) {
+                            user_results.set('eitcAid', 'c')
+                            user_results.set('eitcAidAmount', '$0')
+                        }
+                        if (enrollmentType === 'c') {
+                            user_results.set('otherAid', 'a')
+                            user_results.set('otherAidAmount', '$0')
+                            setTotalAid(totalAid)
+                        }
+                        if ((enrollmentType === 'a') | (enrollmentType === 'b')) {
+                    
+                            if ((familyIncome === 'a') | (familyIncome === 'd')) {
+                                user_results.set('otherAid', 'b')
+
+                                if (sizeOfFamily === 'Two') {
+                                    user_results.set('otherAidAmount', '$4,260')
+                                    setTotalAid(totalAid + 4260)
+                                }
+                                if (sizeOfFamily === 'Three') {
+                                    user_results.set('otherAidAmount', '$6,108')
+                                    setTotalAid(totalAid + 6108)
+                                }
+                                if (sizeOfFamily === 'Four') {
+                                    user_results.set('otherAidAmount', '$7,752')
+                                    setTotalAid(totalAid + 7752)
+                                }
+                                if (sizeOfFamily === 'Five') {
+                                    user_results.set('otherAidAmount', '$9,216')
+                                    setTotalAid(totalAid + 9216)
+                                }
+                                if (sizeOfFamily === 'Six or more') {
+                                    user_results.set('otherAidAmount', '$11,052')
+                                    setTotalAid(totalAid + 11052)
+                                }
+                            }
+                            else {
+                                user_results.set('otherAid', 'c')
+                                user_results.set('otherAidAmount', '$0')
+                                setTotalAid(totalAid)
+                            }
+                        }
                         }}
                         }>
                         <Text style={third_text}>Work Study Program</Text>   
@@ -90,8 +344,9 @@ export default function CollegeWork( props ) {
             <View style={styles.arrow}>
                 <TouchableOpacity
                     onPress={() => {
+                        user_results.set('totalAid', totalAid),
                         user_data.set('collegeWork', collegeWork),
-                        props.navigation.navigate("TotalAid", {user_data})
+                        props.navigation.navigate("TotalAid", {user_data, user_results, totalAid})
                     }}
                 >
                     <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />

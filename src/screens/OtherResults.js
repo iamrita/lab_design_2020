@@ -45,7 +45,7 @@ export default function OtherResults( props ) {
                     <Text style={styles.nextSteps}>More Cash</Text>
                     <TouchableOpacity
                         onPress={() =>
-                            props.navigation.navigate("Apply")
+                            props.navigation.navigate("Share")
                         }
                     >
                         <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />

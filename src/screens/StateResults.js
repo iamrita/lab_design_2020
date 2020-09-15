@@ -19,7 +19,6 @@ export default function StateResults( props ) {
     const [college, setCollege] = useState(original_college);
 
 
-
     return (
         <View style={styles.container}>
              <Text style={styles.titleText}>
@@ -93,7 +92,7 @@ export default function StateResults( props ) {
                     <Text style={styles.nextSteps}>More Cash</Text>
                     <TouchableOpacity
                         onPress={() =>
-                            props.navigation.navigate("Apply")
+                            props.navigation.navigate("Share")
                         }
                     >
                         <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />

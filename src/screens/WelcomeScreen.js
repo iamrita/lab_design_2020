@@ -20,7 +20,6 @@ const WelcomeScreen = (props) => { // change screen name
    )
 };
  
- 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',

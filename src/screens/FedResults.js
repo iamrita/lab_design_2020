@@ -9,10 +9,11 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 
 export default function FedResults( props ) {
-    const user_data = props.navigation.getParam('user_data');
-    //const user_results = props.navigation.getParam('user_results');
+    //const user_data = props.navigation.getParam('user_data');
+    const user_results = props.navigation.getParam('user_results');
 
-    //const federalAid = user_results.get('federalAid')
+    const federalAid = user_results.get('federalAid')
+    const federalAidAmount = user_results.get('federalAidAmount')
 
 
     return (
@@ -26,7 +27,7 @@ export default function FedResults( props ) {
                 </Text>
                 <View style={styles.numberBox}>
                     <Text style={styles.number}>
-                            $6,195
+                            {federalAidAmount}
                     </Text>
                 </View>
                 <Text style={styles.secondSubtext}>
@@ -48,7 +49,7 @@ export default function FedResults( props ) {
                     <Text style={styles.nextSteps}>More Cash</Text>
                     <TouchableOpacity
                         onPress={() =>
-                            props.navigation.navigate("Apply")
+                            props.navigation.navigate("Share")
                         }
                     >
                         <Ionicons name="ios-arrow-round-forward" size={normalize(120)} color="black" />

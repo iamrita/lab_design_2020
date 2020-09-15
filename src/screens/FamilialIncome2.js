@@ -60,6 +60,8 @@ export default function FamilialIncome2( props ) {
                         <Text style={first_text}>{lowMid}</Text>   
                     </TouchableHighlight>
                 </View>
+                {
+                    (sizeOfFamily != 'Six or more') &&
                 <View style={styles.question}>
                     <TouchableHighlight 
                         style={second_button}
@@ -78,8 +80,7 @@ export default function FamilialIncome2( props ) {
                         <Text style={second_text}>{midMid}</Text>   
                     </TouchableHighlight>
                 </View>
-                {
-                    sizeOfFamily != 'Six or more' &&
+                  }
                     <View style={styles.question}>
                     <TouchableHighlight 
                         style={third_button}
@@ -98,7 +99,6 @@ export default function FamilialIncome2( props ) {
                         <Text style={third_text}>$65,000 to $92,100</Text>   
                 </TouchableHighlight>
                 </View>
-                }
             </View>
             <View style={styles.arrow}>
                 <TouchableOpacity

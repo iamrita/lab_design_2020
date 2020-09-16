@@ -11,6 +11,12 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 export default function OtherResults( props ) {
     //const user_data = props.navigation.getParam('user_data');
 
+    const user_results = props.navigation.getParam('user_results');
+
+    const otherAid = user_results.get('stateAid')
+    const otherAidAmount = user_results.get('stateAidAmount')
+
+
 
     return (
         <View style={styles.container}>
@@ -23,7 +29,7 @@ export default function OtherResults( props ) {
                 </Text>
                 <View style={styles.numberBox}>
                     <Text style={styles.number}>
-                        $2,328 
+                        {otherAidAmount}
                     </Text>
                 </View>
                 <Text style={styles.secondSubtext}>

@@ -14,6 +14,7 @@ export default function FedResults( props ) {
 
     const federalAid = user_results.get('federalAid')
     const federalAidAmount = user_results.get('federalAidAmount')
+    console.log(federalAidAmount)
 
 
     return (

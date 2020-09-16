@@ -9,15 +9,20 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import RNPickerSelect, { defaultStyles } from 'react-native-picker-select';
 import { Chevron } from 'react-native-shapes';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import FamilialIncome1 from "./FamilialIncome1.js";
 
 const original_gpa = '3.0 or more'
 const original_college = 'UC'
 
 export default function StateResults( props ) {
-    const user_data = props.navigation.getParam('user_data');
+    const user_results = props.navigation.getParam('user_results');
+
+    const stateAid = user_results.get('stateAid')
+    const stateAidAmount = user_results.get('stateAidAmount')
+
+    
     const [gpa, setGpa] = useState(original_gpa);
     const [college, setCollege] = useState(original_college);
-
 
     return (
         <View style={styles.container}>
@@ -70,11 +75,11 @@ export default function StateResults( props ) {
                 </Text>
                 <View style={styles.numberBox}>
                     <Text style={styles.number}>
-                        $12,570 
+                        $12,750
                     </Text>
                 </View>
                 <Text style={styles.secondSubtext}>
-                    through Cal Grants!
+                    through Cal Grants! And community college would be free!
                 </Text>
             </View>
             <View style={styles.arrows}>
@@ -102,6 +107,49 @@ export default function StateResults( props ) {
         </View>
     );
 };
+
+
+/*
+                <View style={styles.numberBox}>
+                    {
+                        (((stateAid === 'a') | (stateAid === 'b')) && (college === 'UC') && (gpa === '3.0 or more')) &&
+                            <Text style={styles.number}>
+                                $12,750
+                            </Text>
+                    }
+                    {
+                       (((stateAid === 'a') | (stateAid === 'b')) && (college === 'CSU') && (gpa === '3.0 or more')) &&
+                        <Text style={styles.number}>
+                            $5,742
+                        </Text>                     
+                    }
+                    {
+                       (((stateAid === 'a') | (stateAid === 'b')) && (college === 'Private College') && (gpa === '3.0 or more')) &&
+                        <Text style={styles.number}>
+                            $9,084
+                        </Text>                     
+                    }
+                                        {
+                       ((stateAid === 'a') && (gpa === 'Between 2.0 and 3.0')) &&
+                        <Text style={styles.number}>
+                            $1,672
+                        </Text>                     
+                    }
+                    {
+                       (((stateAid === 'a') && (gpa === 'Lower than 2.0')) |  ((stateAid === 'b') && ((gpa === 'Lower than 2.0') | (gpa === 'Between 2.0 and 3.0')))) &&
+                        <Text style={styles.number}>
+                            $1,094
+                        </Text>                     
+                    }
+                    {
+                       (stateAid === 'c') &&
+                        <Text style={styles.number}>
+                            $5,028
+                        </Text>                     
+                    }
+                </View>
+
+*/
 
 const styles = StyleSheet.create({
     container: {

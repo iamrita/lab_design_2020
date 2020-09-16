@@ -20,6 +20,10 @@ const TotalAidScreen = (props) => { // change screen name
     federalAidAmount = user_results.get('eitcAidAmount')
     totalAid = props.navigation.getParam('totalAid')
 
+
+    console.log('federal aid amount', federalAidAmount)
+
+
     return (
        <View style={styles.container}>
             <Text style={styles.text1}>Congrats Future College Grad!</Text>

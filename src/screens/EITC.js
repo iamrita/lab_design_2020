@@ -9,7 +9,13 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 
 export default function EITC( props ) {
-    const user_data = props.navigation.getParam('user_data');
+    //const user_data = props.navigation.getParam('user_data');
+
+    const user_results = props.navigation.getParam('user_results');
+
+    const eitcAid = user_results.get('stateAid')
+    const eitcAidAmount = user_results.get('stateAidAmount')
+
     const familyIncome = 'a'
 
     return (
@@ -27,7 +33,7 @@ export default function EITC( props ) {
                     </Text>
                     <View style={styles.numberBox}>
                         <Text style={styles.number}>
-                            $3,141
+                            {eitcAidAmount}
                         </Text>
                     </View>
                     <Text style={styles.firstBottomSubtext}>

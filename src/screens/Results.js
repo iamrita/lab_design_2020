@@ -8,9 +8,22 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 
+
 export default function Results( props ) {
     const user_data = props.navigation.getParam('user_data');
     const user_results = props.navigation.getParam('user_results');
+
+    console.log(federalAidAmount)
+
+    federalAid = user_results.get('federalAid')
+    federalAidAmount = user_results.get('federalAidAmount')
+    stateAid = user_results.get('stateAid')
+    stateAidAmount = user_results.get('stateAidAmount')
+    otherAid = user_results.get('otherAid')
+    federalAidAmount = user_results.get('otherAidAmount')
+    eitcAid = user_results.get('eitcAid')
+    federalAidAmount = user_results.get('eitcAidAmount')
+    totalAid = props.navigation.getParam('totalAid')
 
     const familyIncome = user_data.get('familyIncome')
 

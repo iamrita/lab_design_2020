@@ -29,7 +29,7 @@ export default function OtherResults( props ) {
                 </Text>
                 <View style={styles.numberBox}>
                     <Text style={styles.number}>
-                        {otherAidAmount}
+                        $4,260
                     </Text>
                 </View>
                 <Text style={styles.secondSubtext}>

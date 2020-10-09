@@ -33,7 +33,7 @@ export default function EITC( props ) {
                     </Text>
                     <View style={styles.numberBox}>
                         <Text style={styles.number}>
-                            {eitcAidAmount}
+                            $3,141
                         </Text>
                     </View>
                     <Text style={styles.firstBottomSubtext}>

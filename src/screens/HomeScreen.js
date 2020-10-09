@@ -1,6 +1,10 @@
 import React from "react";
 import {View, Text, StyleSheet, Image, TouchableOpacity} from "react-native";
-import {Feather} from '@expo/vector-icons'
+//import {Feather} from '@expo/vector-icons'
+import { Ionicons } from '@expo/vector-icons'; 
+import normalize from "../../normalizeSize.js";
+
+
 
 const HomeScreen = (props) => { // change screen name
     const user_data = new Map();
@@ -9,13 +13,22 @@ const HomeScreen = (props) => { // change screen name
        <View style={styles.container}>
         <Image style={styles.image} source={require('../../assets/4cfz19.gif')}/>
         <Text style={styles.text}>My College Cash</Text>
-        <TouchableOpacity onPress={() => props.navigation.navigate('IntroQuestion', {user_data})}>
-            <Feather style={styles.icon} name="arrow-right-circle"/>
-        </TouchableOpacity>
+        <View style={styles.arrow}>
+            <TouchableOpacity
+                    onPress={() => props.navigation.navigate('IntroQuestion', {user_data})}
+                >
+                    <Ionicons name="ios-arrow-round-forward" size={normalize(160)} color="black" />
+            </TouchableOpacity>
+        </View>
        </View>
    )
 };
- 
+
+
+//<TouchableOpacity onPress={() => props.navigation.navigate('IntroQuestion', {user_data})}>
+//   <Feather style={styles.icon} name="arrow-right-circle"/>
+//</TouchableOpacity>
+
  
 const styles = StyleSheet.create({
   container: {
@@ -29,6 +42,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 400,
     paddingBottom:200,
+    marginTop: 100,
   },
   text: {
     fontFamily: 'Hoefler Text',
@@ -42,7 +56,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: -150,
     left: 100
-  }
+  },
+  arrow: {
+    alignItems: 'flex-end',
+    marginRight: 10
+}
  
 });
  

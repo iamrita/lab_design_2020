@@ -32,7 +32,7 @@ const TotalAidScreen = (props) => { // change screen name
             </View>
             <Text style={styles.text2}>Your total aid is:</Text>
                 <Text style={styles.number}>
-                {totalAid}
+                $14,576
                 </Text>
             <TouchableOpacity onPress={() => props.navigation.navigate('Results', {user_data, user_results})} style={styles.outerButton}>
                 <Text style={styles.button}>See my breakdown</Text>

@@ -28,7 +28,7 @@ export default function FedResults( props ) {
                 </Text>
                 <View style={styles.numberBox}>
                     <Text style={styles.number}>
-                            {federalAidAmount}
+                            $6,195
                     </Text>
                 </View>
                 <Text style={styles.secondSubtext}>
